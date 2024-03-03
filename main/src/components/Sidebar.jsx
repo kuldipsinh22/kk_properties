@@ -3,17 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   return (
-    <>
-      <div
-        class="position-absolute w-100 min-height-300 top-0"
-        style={{
-          backgroundImage:
-            "url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/profile-layout-header.jpg')",
-          backgroundPositionY: "50%",
-        }}
-      >
-        <span class="mask bg-primary opacity-6"></span>
-      </div>
+    <div style={{ "@media (max-width: 1100px)": { display: "none" } }}>
       <aside
         class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 fixed-start"
         // ms-4  my-3
@@ -25,18 +15,9 @@ export default function Sidebar() {
             aria-hidden="true"
             id="iconSidenav"
           ></i>
-          <a
-            class="navbar-brand m-0"
-            href=" https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html "
-            target="_blank"
-          >
-            <img
-              src="../assets/img/logo-ct-dark.png"
-              class="navbar-brand-img h-100"
-              alt="main_logo"
-            />
-            <span class="ms-1 font-weight-bold">Argon Dashboard 2</span>
-          </a>
+          <div class="navbar-brand m-0" target="_blank">
+            <h4 class="font-weight-bold">KK PROPERTIES</h4>
+          </div>
         </div>
         <hr class="horizontal dark mt-0" />
         <div id="sidenav-collapse-main">
@@ -121,6 +102,6 @@ export default function Sidebar() {
           </ul>
         </div>
       </aside>
-    </>
+    </div>
   );
 }

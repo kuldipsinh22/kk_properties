@@ -3,31 +3,31 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Header() {
-  const [admin_name, setName] = useState("");
-  const [admin_id, setId] = useState(sessionStorage.getItem("user"));
+  // const [admin_name, setName] = useState("");
+  // const [admin_id, setId] = useState(sessionStorage.getItem("user"));
 
-  const navigate = useNavigate();
-  useEffect(() => {
-    fatchUserName();
-    if (!admin_id) {
-      navigate("/");
-      window.location.reload();
-    }
-  }, [admin_id]);
+  // const navigate = useNavigate();
+  // useEffect(() => {
+  //   fatchUserName();
+  //   if (!admin_id) {
+  //     navigate("/");
+  //     window.location.reload();
+  //   }
+  // }, [admin_id]);
 
-  const fatchUserName = async () => {
-    try {
-      const res = await axios.get("http://localhost:1122/kk/admin/" + admin_id);
-      console.log(res.data.admin_name);
-      setName(res.data.admin_name);
-    } catch (error) {}
-  };
+  // const fatchUserName = async () => {
+  //   try {
+  //     const res = await axios.get("http://localhost:1122/kk/admin/" + admin_id);
+  //     console.log(res.data.admin_name);
+  //     setName(res.data.admin_name);
+  //   } catch (error) {}
+  // };
 
-  const logout = () => {
-    sessionStorage.clear();
-    navigate("/");
-    window.location.reload();
-  };
+  // const logout = () => {
+  //   sessionStorage.clear();
+  //   navigate("/");
+  //   window.location.reload();
+  // };
 
   return (
     <div style={{ marginLeft: "240px" }}>

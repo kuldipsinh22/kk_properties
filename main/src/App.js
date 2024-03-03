@@ -16,7 +16,7 @@ const Layout = () => {
 };
 
 function App() {
-  const [auth, setAuth] = useState(sessionStorage.getItem("user"));
+  // const [auth, setAuth] = useState(sessionStorage.getItem("user"));
   return (
     <>
       <BrowserRouter>
