@@ -2,10 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
+import { Camera } from "lucide-react";
 
 export default function Home() {
   const [properties, setProperties] = useState([]);
-  let i = 1;
+
   useEffect(() => {
     getProperties();
   }, []);
@@ -14,15 +15,7 @@ export default function Home() {
     setProperties(res.data);
     console.log(res.data);
   };
-  const deleteProperties = async (id) => {
-    let ans = window.confirm("are you sure?");
-    if (ans) {
-      const res = await axios.delete("http://localhost:1122/kk/property/" + id);
-      console.log(res.data);
-      alert(res.data);
-      getProperties();
-    }
-  };
+
   return (
     <div style={{ marginTop: "50px", marginRight: "500px" }}>
       {properties.map((properties) => (
