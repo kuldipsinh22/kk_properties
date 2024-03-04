@@ -1,7 +1,41 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { IoHomeSharp } from "react-icons/io5";
+import { ImProfile } from "react-icons/im";
+import { FaUser } from "react-icons/fa";
+import { ImUserTie } from "react-icons/im";
+import { PiBuildingsFill } from "react-icons/pi";
 
 export default function Sidebar() {
+  const [auth, setAuth] = useState(sessionStorage.getItem("user"));
+  const [role_id, setRole] = useState(sessionStorage.getItem("role"));
+  const menuitems = [
+    {
+      path: "/Home",
+      name: "Home",
+      icon: <IoHomeSharp size={20} color="#FB8340" />,
+    },
+    {
+      path: "/Users",
+      name: "Users",
+      icon: <FaUser size={20} color="#FB8340" />,
+    },
+    {
+      path: "/Dealer",
+      name: "Dealers",
+      icon: <ImUserTie size={20} color="#FB8340" />,
+    },
+    {
+      path: "/Property",
+      name: "Properties",
+      icon: <PiBuildingsFill size={20} color="#FB8340" />,
+    },
+    {
+      path: "/Profile",
+      name: "Profile",
+      icon: <ImProfile size={20} color="#FB8340" />,
+    },
+  ];
   return (
     <>
       <div
@@ -39,85 +73,39 @@ export default function Sidebar() {
           </a>
         </div>
         <hr class="horizontal dark mt-0" />
-        <div id="sidenav-collapse-main">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <Link class="nav-link" to="/Home">
-                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                  <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
-                </div>
-                <span class="nav-link-text ms-1">Dashboard</span>
-              </Link>
-            </li>
-            <li class="nav-item">
-              <Link class="nav-link" to="/Users">
-                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                  <i class="ni ni-circle-08 text-warning text-sm opacity-10"></i>
-                </div>
-                <span class="nav-link-text ms-1">Users</span>
-              </Link>
-            </li>
-            <li class="nav-item">
-              <Link class="nav-link" to="/Dealer">
-                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                  <i class="ni ni-circle-08 text-warning text-sm opacity-10"></i>
-                </div>
-                <span class="nav-link-text ms-1">Dealers</span>
-              </Link>
-            </li>
-            <li class="nav-item">
-              <Link class="nav-link" to="/Property">
-                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                  <i class="ni ni-album-2 text-success text-sm opacity-10"></i>
-                </div>
-                <span class="nav-link-text ms-1">Property</span>
-              </Link>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " href="../pages/virtual-reality.html">
-                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                  <i class="ni ni-app text-info text-sm opacity-10"></i>
-                </div>
-                <span class="nav-link-text ms-1">Virtual Reality</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " href="../pages/rtl.html">
-                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                  <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
-                </div>
-                <span class="nav-link-text ms-1">RTL</span>
-              </a>
-            </li>
-            <li class="nav-item mt-3">
-              <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">
-                Account pages
-              </h6>
-            </li>
-            <li class="nav-item">
-              <Link class="nav-link active" to="/Profile">
-                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                  <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
-                </div>
-                <span class="nav-link-text ms-1">Profile</span>
-              </Link>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " href="../pages/sign-in.html">
-                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                  <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
-                </div>
-                <span class="nav-link-text ms-1">Sign In</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " href="../pages/sign-up.html">
-                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                  <i class="ni ni-collection text-info text-sm opacity-10"></i>
-                </div>
-                <span class="nav-link-text ms-1">Sign Up</span>
-              </a>
-            </li>
+        <div
+          id="sidenav-collapse-main"
+          style={{ marginLeft: "30px", marginRight: "30px" }}
+        >
+          <ul style={{ listStyleType: "none", padding: 0 }}>
+            {menuitems.map((item, index) => (
+              <li key={index} style={{ marginBottom: "10px" }}>
+                <NavLink
+                  to={item.path}
+                  className="nav-link"
+                  activeClassName="active"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    textDecoration: "none",
+                    color: "#000",
+                    padding: "10px",
+                    borderRadius: "10px",
+                    transition: "background-color 0.3s ease",
+                  }}
+                  activeStyle={{ backgroundColor: "#e6e6e6" }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.backgroundColor = "#f0f0f0")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.backgroundColor = "transparent")
+                  }
+                >
+                  <div style={{ marginRight: "15px" }}>{item.icon}</div>
+                  <span style={{ fontSize: "16px" }}>{item.name}</span>
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </div>
       </aside>

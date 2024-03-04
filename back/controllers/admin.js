@@ -30,13 +30,12 @@ export const deleteadmin = (req, res) => {
 
 export const insertadmin = (req, res) => {
   const query =
-    "INSERT INTO mst_admin( `admin_name`, `admin_contact`, `admin_email`, `password`, `img`,) values(?)";
+    "INSERT INTO mst_admin( `admin_name`, `contact`, `admin_email`, `password`) values(?)";
   const values = [
     req.body.admin_name,
-    req.body.admin_contact,
+    req.body.contact,
     req.body.admin_email,
     req.body.password,
-    req.file?.filename,
   ];
   console.log(query);
   console.log(values);
@@ -57,13 +56,12 @@ export const insertadmin = (req, res) => {
 // };
 export const updateadmin = (req, res) => {
   const query =
-    "UPDATE `mst_admin` SET `admin_name`=?, `admin_contact`=?, `admin_email`=?, `password`=?, `img`=? where admin_id=?";
+    "UPDATE `mst_admin` SET `admin_name`=?, `contact`=?, `admin_email`=?, `password`=? where admin_id=?";
   const values = [
     req.body.admin_name,
-    req.body.admin_contact,
+    req.body.contact,
     req.body.admin_email,
     req.body.password,
-    req.file?.filename || req.body.img,
   ];
   console.log(query);
   db.query(query, [...values, req.params.id], (err, data) => {

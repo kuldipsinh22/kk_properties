@@ -4,7 +4,7 @@ import Footer from "./Footer";
 
 export default function Profile() {
   const [admin_name, setadmin_name] = useState("");
-  const [admin_contact, setadmin_contact] = useState("");
+  const [contact, setcontact] = useState("");
   const [admin_email, setadmin_email] = useState("");
   // const [admin_about, setadmin_about] = useState("");
   const [password, setpassword] = useState("");
@@ -25,7 +25,7 @@ export default function Profile() {
     const res = await axios.get(url);
     console.log(res.data);
     setadmin_name(res.data.admin_name);
-    setadmin_contact(res.data.admin_contact);
+    setcontact(res.data.contact);
     setadmin_email(res.data.admin_email);
     // setadmin_about(res.data.admin_about);
     setpassword(res.data.password);
@@ -36,7 +36,7 @@ export default function Profile() {
     e.preventDefault();
     const formData = new FormData();
     formData.append("admin_name", admin_name);
-    formData.append("admin_contact", admin_contact);
+    formData.append("contact", contact);
     formData.append("admin_email", admin_email);
     // formData.append("admin_about", admin_about);
     formData.append("password", password);
@@ -108,8 +108,8 @@ export default function Profile() {
                         class="form-control"
                         type="text"
                         placeholder=""
-                        defaultValue={admin_contact}
-                        onChange={(e) => setadmin_contact(e.target.value)}
+                        defaultValue={contact}
+                        onChange={(e) => setcontact(e.target.value)}
                       />
                     </div>
                   </div>
