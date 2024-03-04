@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Contact2, Home, MapPinned } from "lucide-react";
 
 export default function Sidebar() {

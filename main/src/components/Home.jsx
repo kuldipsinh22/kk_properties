@@ -1,8 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import Footer from "./Footer";
-import { Camera } from "lucide-react";
 
 export default function Home() {
   const [properties, setProperties] = useState([]);
@@ -17,11 +14,11 @@ export default function Home() {
   };
 
   return (
-    <div style={{ marginTop: "50px", marginRight: "500px" }}>
+    <div style={{ marginTop: "50px" }}>
       {properties.map((properties) => (
         <div
           style={{
-            maxWidth: "400px",
+            maxWidth: "600px",
             margin: "20px auto",
             borderRadius: "10px",
             overflow: "hidden",
@@ -38,7 +35,7 @@ export default function Home() {
           >
             <img
               src={`http://localhost:1122/uploads/${properties.img}`}
-              alt="Profile Image"
+              alt="ProfileImage"
               style={{
                 width: "50px",
                 height: "50px",
@@ -50,7 +47,7 @@ export default function Home() {
           </div>
           <img
             src={`http://localhost:1122/uploads/${properties.p_img}`}
-            alt="Post Image"
+            alt="PostImage"
             style={{ width: "100%", height: "auto" }}
           />
           <div style={{ padding: "10px", color: "#666666", fontSize: "12px" }}>
