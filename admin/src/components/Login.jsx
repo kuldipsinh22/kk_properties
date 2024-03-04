@@ -2,9 +2,10 @@ import axios from "axios";
 import React, { useState } from "react";
 
 export default function Login() {
-  const [admin_contact, setphone] = useState("");
+  const [contact, setphone] = useState("");
   const [password, setpassword] = useState("");
   const [error, setError] = useState("");
+  const [role_id, setRole] = useState(0);
 
   const submitHandle = async (e) => {
     e.preventDefault();
@@ -12,17 +13,20 @@ export default function Login() {
     try {
       const res = await axios.get("http://localhost:1122/kk/login", {
         params: {
-          admin_contact: admin_contact,
+          contact: contact,
           password: password,
+          role_id: role_id,
         },
       });
 
       if (res.data > 0) {
         setError("");
         sessionStorage.setItem("user", res.data);
+        sessionStorage.setItem("role", role_id);
+
         window.location.reload();
       } else {
-        setError("Invalid Contact or Password");
+        setError("Invalid UserId or Password");
       }
     } catch (error) {}
   };
@@ -43,6 +47,20 @@ export default function Login() {
                   </div>
                   <div class="card-body">
                     <form role="form">
+                      <div class="col-12">
+                        <label>Choose a Role:</label>
+
+                        <select
+                          name="role"
+                          id="role"
+                          class="form-control"
+                          onChange={(e) => setRole(e.target.value)}
+                        >
+                          <option value="0">Select Role</option>
+                          <option value="1">Admin</option>
+                          <option value="2">Dealer </option>
+                        </select>
+                      </div>
                       <label>Contact</label>
                       <div class="mb-3">
                         <input

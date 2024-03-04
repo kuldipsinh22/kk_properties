@@ -25,10 +25,12 @@ const Layout = () => {
 
 function App() {
   const [auth, setAuth] = useState(sessionStorage.getItem("user"));
+  const [role_id, setRole] = useState(sessionStorage.getItem("role"));
+
   return (
     <>
       <BrowserRouter>
-        {auth ? (
+        {auth && role_id == 1 ? (
           <>
             <Layout />
             <Routes>
@@ -44,6 +46,19 @@ function App() {
               <Route path="/Dealer" element={<Dealer />} />
               <Route path="/Add_dealer" element={<Add_dealer />} />
               <Route path="/Add_dealer/:id" element={<Add_dealer />} />
+            </Routes>
+            <Footer />
+          </>
+        ) : auth && role_id == 2 ? (
+          <>
+            <Layout />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/Home" element={<Home />} />
+              <Route path="/Profile" element={<Profile />} />
+              <Route path="/Property" element={<Property />} />
+              <Route path="/Add_property" element={<Add_property />} />
+              <Route path="/Add_property/:id" element={<Add_property />} />
             </Routes>
             <Footer />
           </>
