@@ -12,6 +12,7 @@ import Login from "./components/Login";
 import Profile from "./components/Profile";
 import Dealer from "./components/Dealer";
 import Add_dealer from "./components/Add_dealer";
+import PropertyforDealer from "./components/PropertyforDealer";
 
 const Layout = () => {
   return (
@@ -55,10 +56,13 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/Home" element={<Home />} />
-              <Route path="/Profile" element={<Profile />} />
               <Route path="/Property" element={<Property />} />
               <Route path="/Add_property" element={<Add_property />} />
               <Route path="/Add_property/:id" element={<Add_property />} />
+              <Route
+                path="/PropertyforDealer"
+                element={<PropertyforDealer />}
+              />
             </Routes>
             <Footer />
           </>

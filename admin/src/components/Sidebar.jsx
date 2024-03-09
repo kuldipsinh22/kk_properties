@@ -1,41 +1,61 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { IoHomeSharp } from "react-icons/io5";
-import { ImProfile } from "react-icons/im";
-import { FaUser } from "react-icons/fa";
-import { ImUserTie } from "react-icons/im";
-import { PiBuildingsFill } from "react-icons/pi";
+import { IoHomeOutline } from "react-icons/io5";
+import { AiOutlineProfile } from "react-icons/ai";
+import { CiUser } from "react-icons/ci";
+import { RiAdminLine } from "react-icons/ri";
+import { PiBuildings } from "react-icons/pi";
+import { IoIosLogOut } from "react-icons/io";
 
 export default function Sidebar() {
   const [auth, setAuth] = useState(sessionStorage.getItem("user"));
   const [role_id, setRole] = useState(sessionStorage.getItem("role"));
-  const menuitems = [
+  const menuitemsadmin = [
     {
       path: "/Home",
       name: "Home",
-      icon: <IoHomeSharp size={20} color="#FB8340" />,
+      icon: <IoHomeOutline size={20} color="#FB8340" />,
     },
     {
       path: "/Users",
       name: "Users",
-      icon: <FaUser size={20} color="#FB8340" />,
+      icon: <CiUser size={20} color="#FB8340" />,
     },
     {
       path: "/Dealer",
       name: "Dealers",
-      icon: <ImUserTie size={20} color="#FB8340" />,
+      icon: <RiAdminLine size={20} color="#FB8340" />,
     },
     {
       path: "/Property",
       name: "Properties",
-      icon: <PiBuildingsFill size={20} color="#FB8340" />,
+      icon: <PiBuildings size={20} color="#FB8340" />,
     },
     {
       path: "/Profile",
       name: "Profile",
-      icon: <ImProfile size={20} color="#FB8340" />,
+      icon: <AiOutlineProfile size={20} color="#FB8340" />,
     },
   ];
+
+  const menuitemsDealer = [
+    {
+      path: "/Home",
+      name: "Home",
+      icon: <IoHomeOutline size={20} color="#FB8340" />,
+    },
+
+    {
+      path: "/PropertyforDealer",
+      name: "Properties",
+      icon: <PiBuildings size={20} color="#FB8340" />,
+    },
+  ];
+  const btnSignOut = () => {
+    sessionStorage.clear();
+    setAuth("");
+    window.location.reload();
+  };
   return (
     <>
       <div
@@ -73,39 +93,121 @@ export default function Sidebar() {
           </a>
         </div>
         <hr class="horizontal dark mt-0" />
+        {role_id == 1 ? (
+          <>
+            {/* Menu Items admin */}
+            <div
+              id="sidenav-collapse-main"
+              style={{ marginLeft: "30px", marginRight: "30px" }}
+            >
+              <ul style={{ listStyleType: "none", padding: 0 }}>
+                {menuitemsadmin.map((item, index) => (
+                  <li key={index} style={{ marginBottom: "10px" }}>
+                    <NavLink
+                      to={item.path}
+                      className="nav-link"
+                      activeClassName="active"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        textDecoration: "none",
+                        color: "#000",
+                        padding: "10px",
+                        borderRadius: "10px",
+                        transition: "background-color 0.3s ease",
+                      }}
+                      activeStyle={{ backgroundColor: "#e6e6e6" }}
+                      onMouseEnter={(e) =>
+                        (e.currentTarget.style.backgroundColor = "#f0f0f0")
+                      }
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.backgroundColor = "transparent")
+                      }
+                    >
+                      <div style={{ marginRight: "15px" }}>{item.icon}</div>
+                      <span style={{ fontSize: "16px" }}>{item.name}</span>
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
+        ) : role_id == 2 ? (
+          <>
+            <div
+              id="sidenav-collapse-main"
+              style={{ marginLeft: "30px", marginRight: "30px" }}
+            >
+              <ul style={{ listStyleType: "none", padding: 0 }}>
+                {menuitemsDealer.map((item, index) => (
+                  <li key={index} style={{ marginBottom: "10px" }}>
+                    <NavLink
+                      to={item.path}
+                      className="nav-link"
+                      activeClassName="active"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        textDecoration: "none",
+                        color: "#000",
+                        padding: "10px",
+                        borderRadius: "10px",
+                        transition: "background-color 0.3s ease",
+                      }}
+                      activeStyle={{ backgroundColor: "#e6e6e6" }}
+                      onMouseEnter={(e) =>
+                        (e.currentTarget.style.backgroundColor = "#f0f0f0")
+                      }
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.backgroundColor = "transparent")
+                      }
+                    >
+                      <div style={{ marginRight: "15px" }}>{item.icon}</div>
+                      <span style={{ fontSize: "16px" }}>{item.name}</span>
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
+
+        <hr class="horizontal dark mt-0" />
+        {/* Logout */}
         <div
           id="sidenav-collapse-main"
           style={{ marginLeft: "30px", marginRight: "30px" }}
         >
           <ul style={{ listStyleType: "none", padding: 0 }}>
-            {menuitems.map((item, index) => (
-              <li key={index} style={{ marginBottom: "10px" }}>
-                <NavLink
-                  to={item.path}
-                  className="nav-link"
-                  activeClassName="active"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    textDecoration: "none",
-                    color: "#000",
-                    padding: "10px",
-                    borderRadius: "10px",
-                    transition: "background-color 0.3s ease",
-                  }}
-                  activeStyle={{ backgroundColor: "#e6e6e6" }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.backgroundColor = "#f0f0f0")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.backgroundColor = "transparent")
-                  }
-                >
-                  <div style={{ marginRight: "15px" }}>{item.icon}</div>
-                  <span style={{ fontSize: "16px" }}>{item.name}</span>
-                </NavLink>
-              </li>
-            ))}
+            <li onClick={btnSignOut}>
+              <div
+                className="nav-link"
+                activeClassName="active"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  textDecoration: "none",
+                  color: "#000",
+                  padding: "10px",
+                  borderRadius: "10px",
+                  transition: "background-color 0.3s ease",
+                }}
+                activeStyle={{ backgroundColor: "#e6e6e6" }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = "#f0f0f0")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = "transparent")
+                }
+              >
+                <div style={{ marginRight: "15px" }}>
+                  <IoIosLogOut />
+                </div>
+                <span style={{ fontSize: "16px" }}>Logout</span>
+              </div>
+            </li>
           </ul>
         </div>
       </aside>

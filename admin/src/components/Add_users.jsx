@@ -10,7 +10,7 @@ export default function Add_users() {
   const [password, setpassword] = useState("");
   const [status, setstatus] = useState("");
   const [city, setcity] = useState("");
-  const [state, setstate] = useState("");
+  const [state, setstate] = useState(""); 
 
   const location = useLocation();
   const navigate = useNavigate();
