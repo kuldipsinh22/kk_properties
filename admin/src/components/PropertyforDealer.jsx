@@ -7,7 +7,6 @@ export default function PropertyforDealer() {
   const [auth, setAuth] = useState(sessionStorage.getItem("user"));
   const [Property, setProperty] = useState([]);
 
-  let i = 1;
   useEffect(() => {
     getProperty();
   }, []);
