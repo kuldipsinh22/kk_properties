@@ -11,6 +11,7 @@ export const getProperty = (req, res) => {
 
 export const getproperties = (req, res) => {
   const query = "select * from property";
+  // Demo push
 
   db.query(query, (err, data) => {
     if (err) return res.json(err);
