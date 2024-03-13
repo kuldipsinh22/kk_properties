@@ -5,7 +5,7 @@ export const getProperty = (req, res) => {
 
   db.query(query, [req.params.id], (err, data) => {
     if (err) return res.json(err);
-    return res.json(data[0]);
+    return res.json(data);
   });
 };
 

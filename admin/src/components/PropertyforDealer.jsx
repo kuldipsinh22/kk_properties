@@ -64,7 +64,8 @@ export default function PropertyforDealer() {
                     </tr>
                   </thead>
                   <tbody>
-                    {Property.map((property) => (
+                    {console.log(Property)}
+                    {Property?.map((property) => (
                       <tr>
                         <td>
                           <div class="d-flex px-2 py-1">
