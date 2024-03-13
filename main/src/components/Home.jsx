@@ -43,7 +43,7 @@ export default function Home() {
                 marginRight: "10px",
               }}
             />
-            <div style={{ fontWeight: "bold" }}>@sigma</div>
+            <div style={{ fontWeight: "bold" }}>@{properties.acc_name}</div>
           </div>
           <img
             src={`http://localhost:1122/uploads/${properties.p_img}`}
@@ -51,9 +51,7 @@ export default function Home() {
             style={{ width: "100%", height: "auto" }}
           />
           <div style={{ padding: "10px", color: "#666666", fontSize: "12px" }}>
-            <div style={{ marginBottom: "5px" }}>
-              Small description of the post goes here.
-            </div>
+            <div style={{ marginBottom: "5px" }}>{properties.description}</div>
             <button
               style={{
                 background: "linear-gradient(135deg, #000000, #ffcc00)",

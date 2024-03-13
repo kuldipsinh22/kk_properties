@@ -37,7 +37,7 @@ export default function PropertyforDealer() {
               <li class="nav-item d-flex align-items-center">
                 <Link
                   class="btn btn-outline-primary btn-sm mb-0 me-3"
-                  to="/Add_property"
+                  to="/Add_propertyd"
                 >
                   Add property
                 </Link>
@@ -72,8 +72,9 @@ export default function PropertyforDealer() {
                             <div>
                               <img
                                 src={`http://localhost:1122/uploads/${property.p_img}`}
-                                class="avatar avatar-sm me-3"
+                                class="avatar avatar-xl me-3"
                                 alt="user1"
+                                style={{ objectFit: "cover" }}
                               />
                             </div>
                             <div class="d-flex flex-column justify-content-center">
@@ -128,7 +129,7 @@ export default function PropertyforDealer() {
                               <i class="far fa-trash-alt me-2"></i>
                               Delete
                             </a>
-                            <Link to={`/Add_property/` + property.property_id}>
+                            <Link to={`/Add_propertyd/` + property.property_id}>
                               <i
                                 class="fas fa-pencil-alt text-dark me-2"
                                 aria-hidden="true"

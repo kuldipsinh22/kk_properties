@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { IoHomeOutline } from "react-icons/io5";
 import { AiOutlineProfile } from "react-icons/ai";
 import { CiUser } from "react-icons/ci";
@@ -10,6 +10,8 @@ import { IoIosLogOut } from "react-icons/io";
 export default function Sidebar() {
   const [auth, setAuth] = useState(sessionStorage.getItem("user"));
   const [role_id, setRole] = useState(sessionStorage.getItem("role"));
+  const navigate = useNavigate();
+
   const menuitemsadmin = [
     {
       path: "/Home",
@@ -55,6 +57,7 @@ export default function Sidebar() {
     sessionStorage.clear();
     setAuth("");
     window.location.reload();
+    navigate("/");
   };
   return (
     <>

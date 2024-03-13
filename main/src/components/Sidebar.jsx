@@ -1,32 +1,35 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Contact2, Home, MapPinned } from "lucide-react";
+import { IoHomeOutline } from "react-icons/io5";
+import { AiOutlineProfile } from "react-icons/ai";
+import { CiUser } from "react-icons/ci";
 
 export default function Sidebar() {
   const menuitems = [
     {
       path: "/Home",
       name: "Home",
-      icon: <Home size={25} color="blue" />,
-    },
-    {
-      path: "/Profile",
-      name: "Profile",
-      icon: <Contact2 size={25} color="blue" />,
+      icon: <IoHomeOutline size={20} color="#FFE493" />,
     },
     {
       path: "/Explore",
       name: "Explore",
-      icon: <MapPinned size={25} color="blue" />,
+      icon: <CiUser size={20} color="#FFE493" />,
+    },
+    {
+      path: "/Profile",
+      name: "Profile",
+      icon: <AiOutlineProfile size={20} color="#FFE493" />,
     },
   ];
 
   return (
-    <div style={{ "@media (max-width: 1100px)": { display: "none" } }}>
+    <div>
       <aside
-        class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 fixed-start"
+        class="sidenav navbar navbar-vertical navbar-expand-xs border-0 fixed-start"
         // ms-4  my-3
         id="sidenav-main"
+        style={{ backgroundColor: "black" }}
       >
         <div class="sidenav-header">
           <i
@@ -35,11 +38,16 @@ export default function Sidebar() {
             id="iconSidenav"
           ></i>
           <div class="navbar-brand m-0" target="_blank">
-            <h4 class="font-weight-bold">KK PROPERTIES</h4>
+            <h4 class="font-weight-bold" style={{ color: "white" }}>
+              <span style={{ color: "#FFE493" }}>KK</span> PROPERTIES
+            </h4>
           </div>
         </div>
         <hr class="horizontal dark mt-0" />
-        <div id="sidenav-collapse-main">
+        <div
+          id="sidenav-collapse-main"
+          style={{ marginLeft: "30px", marginRight: "30px" }}
+        >
           <ul style={{ listStyleType: "none", padding: 0 }}>
             {menuitems.map((item, index) => (
               <li key={index} style={{ marginBottom: "10px" }}>
@@ -51,21 +59,21 @@ export default function Sidebar() {
                     display: "flex",
                     alignItems: "center",
                     textDecoration: "none",
-                    color: "#000",
+                    color: "white",
                     padding: "10px",
                     borderRadius: "10px",
                     transition: "background-color 0.3s ease",
                   }}
-                  activeStyle={{ backgroundColor: "#e6e6e6" }}
+                  activeStyle={{ backgroundColor: "#282F27" }}
                   onMouseEnter={(e) =>
-                    (e.currentTarget.style.backgroundColor = "#f0f0f0")
+                    (e.currentTarget.style.backgroundColor = "#282F27")
                   }
                   onMouseLeave={(e) =>
                     (e.currentTarget.style.backgroundColor = "transparent")
                   }
                 >
-                  <div style={{ marginRight: "10px" }}>{item.icon}</div>
-                  <span style={{ fontSize: "14px" }}>{item.name}</span>
+                  <div style={{ marginRight: "15px" }}>{item.icon}</div>
+                  <span style={{ fontSize: "16px" }}>{item.name}</span>
                 </NavLink>
               </li>
             ))}

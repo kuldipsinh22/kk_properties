@@ -2,8 +2,7 @@ import { db } from "../db.js";
 
 export const getproperties = (req, res) => {
   const query1 =
-    "SELECT a.*, b.acc_name, b.img FROM property a, mst_dealer b where a.dealer_id = b.dealer_id";
-  // const values = [req.body.dealer_name];
+    "SELECT a.*, b.* FROM property a, mst_dealer b where a.dealer_id = b.dealer_id";
   db.query(query1, (err, data) => {
     if (err) {
       return res.json(err);
@@ -12,18 +11,6 @@ export const getproperties = (req, res) => {
     }
   });
 };
-
-// export const getDealers = (req, res) => {
-//   const query1 =
-//     "SELECT a.*, b.* FROM property a, dealer b where a.dealer_id = b.dealer_id";
-//   db.query(query1, (err, data) => {
-//     if (err) {
-//       return res.json(err);
-//     } else {
-//       return res.json(data);
-//     }
-//   });
-// };
 
 export const getproperty = (req, res) => {
   const query = "select * from property where property_id=?";
@@ -72,7 +59,7 @@ export const updateproperty = (req, res) => {
     "UPDATE `property` SET `property_name`=?, `property_type`=?, `p_img`=?, `description`=?, `tags`=?, `location`=?, `dealer_id`=?, `status`=?, `update_date`=?, `property_price`=?, `type`=? where property_id=?";
   const values = [
     req.body.property_name,
-    req.body.property_type || 1,
+    req.body.property_type,
     req.file?.filename || req.body.p_img,
     req.body.description,
     req.body.tags,
@@ -81,7 +68,7 @@ export const updateproperty = (req, res) => {
     req.body.status || 0,
     new Date(),
     req.body.property_price,
-    req.body.type || 1,
+    req.body.type,
   ];
   console.log(query);
   db.query(query, [...values, req.params.id], (err, data) => {

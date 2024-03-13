@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
+import Profile from "./components/Profile";
 
 const Layout = () => {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Home" element={<Home />} />
+            <Route path="/Profile" element={<Profile />} />
           </Routes>
           <Footer />
         </>

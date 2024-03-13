@@ -13,6 +13,7 @@ import Profile from "./components/Profile";
 import Dealer from "./components/Dealer";
 import Add_dealer from "./components/Add_dealer";
 import PropertyforDealer from "./components/PropertyforDealer";
+import Add_property_dealer from "./components/Add_property_dealer";
 
 const Layout = () => {
   return (
@@ -56,12 +57,14 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/Home" element={<Home />} />
-              <Route path="/Property" element={<Property />} />
-              <Route path="/Add_property" element={<Add_property />} />
-              <Route path="/Add_property/:id" element={<Add_property />} />
               <Route
                 path="/PropertyforDealer"
                 element={<PropertyforDealer />}
+              />
+              <Route path="/Add_propertyd" element={<Add_property_dealer />} />
+              <Route
+                path="/Add_propertyd/:id"
+                element={<Add_property_dealer />}
               />
             </Routes>
             <Footer />
