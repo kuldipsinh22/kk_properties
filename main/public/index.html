@@ -1,20 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
+
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!-- css -->
+    <meta charset="UTF-8" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title  -->
+    <title>South - Real Estate Agency Template | Home</title>
+
+    <!-- Favicon  -->
+    <link rel="icon" href="img/core-img/favicon.ico" />
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css.map" />
+    <link rel="stylesheet" href="css/animate.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/classy-nav.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/jquery-ui.min.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" />
+    <link rel="stylesheet" href="css/nice-select.css" />
+    <link rel="stylesheet" href="css/owl.carousel.css" />
+    <link rel="stylesheet" href="css/themify-icons.css" />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -24,37 +46,9 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <!--     Fonts and icons     -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
-      rel="stylesheet"
-    />
-    <!-- Nucleo Icons -->
-    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
-    <!-- Font Awesome Icons -->
-    <script
-      src="https://kit.fontawesome.com/42d5adcbca.js"
-      crossorigin="anonymous"
-    ></script>
-    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
-    <!-- CSS Files -->
-    <link
-      id="pagestyle"
-      href="../assets/css/argon-dashboard.css?v=2.0.4"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <!-- Nepcha Analytics (nepcha.com) -->
-    <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
-    <script
-      defer
-      data-site="YOUR_DOMAIN_HERE"
-      src="https://api.nepcha.com/js/nepcha-analytics.js"
-    ></script>
     <title>React App</title>
   </head>
-  <body>
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
@@ -67,118 +61,19 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <!--   Core JS Files   -->
-    <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/core/bootstrap.min.js"></script>
-    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-    <script src="../assets/js/plugins/chartjs.min.js"></script>
-    <script>
-      var ctx1 = document.getElementById("chart-line").getContext("2d");
-
-      var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
-
-      gradientStroke1.addColorStop(1, "rgba(94, 114, 228, 0.2)");
-      gradientStroke1.addColorStop(0.2, "rgba(94, 114, 228, 0.0)");
-      gradientStroke1.addColorStop(0, "rgba(94, 114, 228, 0)");
-      new Chart(ctx1, {
-        type: "line",
-        data: {
-          labels: [
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-          ],
-          datasets: [
-            {
-              label: "Mobile apps",
-              tension: 0.4,
-              borderWidth: 0,
-              pointRadius: 0,
-              borderColor: "#5e72e4",
-              backgroundColor: gradientStroke1,
-              borderWidth: 3,
-              fill: true,
-              data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-              maxBarThickness: 6,
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: false,
-            },
-          },
-          interaction: {
-            intersect: false,
-            mode: "index",
-          },
-          scales: {
-            y: {
-              grid: {
-                drawBorder: false,
-                display: true,
-                drawOnChartArea: true,
-                drawTicks: false,
-                borderDash: [5, 5],
-              },
-              ticks: {
-                display: true,
-                padding: 10,
-                color: "#fbfbfb",
-                font: {
-                  size: 11,
-                  family: "Open Sans",
-                  style: "normal",
-                  lineHeight: 2,
-                },
-              },
-            },
-            x: {
-              grid: {
-                drawBorder: false,
-                display: false,
-                drawOnChartArea: false,
-                drawTicks: false,
-                borderDash: [5, 5],
-              },
-              ticks: {
-                display: true,
-                color: "#ccc",
-                padding: 20,
-                font: {
-                  size: 11,
-                  family: "Open Sans",
-                  style: "normal",
-                  lineHeight: 2,
-                },
-              },
-            },
-          },
-        },
-      });
-    </script>
-    <script>
-      var win = navigator.platform.indexOf("Win") > -1;
-      if (win && document.querySelector("#sidenav-scrollbar")) {
-        var options = {
-          damping: "0.5",
-        };
-        Scrollbar.init(document.querySelector("#sidenav-scrollbar"), options);
-      }
-    </script>
-    <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../assets/js/argon-dashboard.min.js?v=2.0.4"></script>
+    <!-- js -->
+    <!-- jQuery (Necessary for All JavaScript Plugins) -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Plugins js -->
+    <script src="js/plugins.js"></script>
+    <script src="js/classy-nav.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+    <!-- <script src="js/jquery/jquery-2.2.4.min.js"></script> -->
   </body>
 </html>

@@ -3,14 +3,14 @@ import React, { useState } from "react";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
-import Sidebar from "./components/Sidebar";
-import Profile from "./components/Profile";
+import Property from "./components/Property";
+import About from "./components/About";
+import Blogs from "./components/Blogs";
 
 const Layout = () => {
   return (
     <>
       <Header></Header>
-      <Sidebar></Sidebar>
       <Outlet></Outlet>
     </>
   );
@@ -18,26 +18,22 @@ const Layout = () => {
 
 function App() {
   // const [auth, setAuth] = useState(sessionStorage.getItem("user"));
+  // const [role_id, setRole] = useState(sessionStorage.getItem("role"));
+
   return (
     <>
       <BrowserRouter>
-        {/* {auth ? ( */}
         <>
           <Layout />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Home" element={<Home />} />
-            <Route path="/Profile" element={<Profile />} />
+            <Route path="/Properties" element={<Property />} />
+            <Route path="/About" element={<About />} />
+            <Route path="/Blogs" element={<Blogs />} />
           </Routes>
           <Footer />
         </>
-        {/* ) : ( */}
-        {/* <>
-            <Routes>
-              <Route path="/" element={<Login />} />
-            </Routes>
-          </>
-        )} */}
       </BrowserRouter>
     </>
   );
