@@ -1,6 +1,22 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Footer from "./Footer";
+import { MdOutlineBedroomChild } from "react-icons/md";
+import { TbBath } from "react-icons/tb";
+import { PiRectangle } from "react-icons/pi";
 
 export default function Property() {
+  const [properties, setProperties] = useState([]);
+  let i = 1;
+  useEffect(() => {
+    getProperties();
+  }, []);
+  const getProperties = async () => {
+    const res = await axios.get("http://localhost:1122/kk/property");
+    setProperties(res.data);
+    console.log(res.data);
+  };
   return (
     <>
       {/* ##### Breadcumb Area Start ##### */}
@@ -53,402 +69,131 @@ export default function Property() {
             </div>
           </div>
           <div className="row">
-            {/* Single Featured Property */}
-            <div className="col-12 col-md-6 col-xl-4">
-              <div className="single-featured-property mb-50">
-                {/* Property Thumbnail */}
-                <div className="property-thumb">
-                  <img src="img/bg-img/feature1.jpg" alt="" />
-                  <div className="tag">
-                    <span>For Sale</span>
-                  </div>
-                  <div className="list-price">
-                    <p>$945 679</p>
-                  </div>
-                </div>
-                {/* Property Content */}
-                <div className="property-content">
-                  <h5>Villa in Los Angeles</h5>
-                  <p className="location">
-                    <img src="img/icons/location.png" alt="" />
-                    Upper Road 3411, no.34 CA
-                  </p>
-                  <p>
-                    Integer nec bibendum lacus. Suspendisse dictum enim sit amet
-                    libero malesuada.
-                  </p>
-                  <div className="property-meta-data d-flex align-items-end justify-content-between">
-                    <div className="new-tag">
-                      <img src="img/icons/new.png" alt="" />
-                    </div>
-                    <div className="bathroom">
-                      <img src="img/icons/bathtub.png" alt="" />
-                      <span>2</span>
-                    </div>
-                    <div className="garage">
-                      <img src="img/icons/garage.png" alt="" />
-                      <span>2</span>
-                    </div>
-                    <div className="space">
-                      <img src="img/icons/space.png" alt="" />
-                      <span>120 sq ft</span>
+            {/* Featured Property */}
+            {properties.map((properties) => (
+              <div className="col-12 col-md-6 col-xl-4">
+                <div className="single-featured-property mb-50">
+                  {/* Property Thumbnail */}
+                  <div className="property-thumb">
+                    {/* donee */}
+                    <img
+                      src={`http://localhost:1122/uploads/${properties.p_img}`}
+                      alt=""
+                      style={{
+                        height: "250px",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                    {/* done */}
+                    {properties.type == 1 ? (
+                      <>
+                        <div className="tag">
+                          <span>For Sale</span>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="tag">
+                          <span>For Rent</span>
+                        </div>
+                      </>
+                    )}
+
+                    {/* donee */}
+                    <div className="list-price">
+                      <p>Rs. {properties.property_price}</p>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-            {/* Single Featured Property */}
-            <div className="col-12 col-md-6 col-xl-4">
-              <div className="single-featured-property mb-50">
-                {/* Property Thumbnail */}
-                <div className="property-thumb">
-                  <img src="img/bg-img/feature2.jpg" alt="" />
-                  <div className="tag">
-                    <span>For Sale</span>
-                  </div>
-                  <div className="list-price">
-                    <p>$945 679</p>
-                  </div>
-                </div>
-                {/* Property Content */}
-                <div className="property-content">
-                  <h5>Town House in Los Angeles</h5>
-                  <p className="location">
-                    <img src="img/icons/location.png" alt="" />
-                    Upper Road 3411, no.34 CA
-                  </p>
-                  <p>
-                    Integer nec bibendum lacus. Suspendisse dictum enim sit amet
-                    libero malesuada.
-                  </p>
-                  <div className="property-meta-data d-flex align-items-end justify-content-between">
-                    <div className="new-tag">
-                      <img src="img/icons/new.png" alt="" />
+                  {/* donee */}
+                  {/* Property Content */}
+                  <div className="property-content">
+                    <h5>{properties.property_name}</h5>
+                    <p className="location">
+                      <img src="img/icons/location.png" alt="" />
+                      {properties.location}, {properties.city},{" "}
+                      {properties.state}.
+                    </p>
+                    <p>{properties.description}</p>
+                    <div className="property-meta-data d-flex align-items-end justify-content-between">
+                      <div className="new-tag">
+                        <img src="img/icons/new.png" alt="" />
+                      </div>
+                      <div className="bathroom">
+                        <TbBath size={20} color="#947054" />
+                        <span>{properties.bathrooms}</span>
+                      </div>
+                      <div className="Badrooms">
+                        <MdOutlineBedroomChild size={20} color="#947054" />
+                        <span>{properties.bedrooms}</span>
+                      </div>
+                      <div className="space">
+                        <PiRectangle size={20} color="#947054" />
+                        <span>{properties.sqft} sq ft</span>
+                      </div>
                     </div>
-                    <div className="bathroom">
-                      <img src="img/icons/bathtub.png" alt="" />
-                      <span>2</span>
-                    </div>
-                    <div className="garage">
-                      <img src="img/icons/garage.png" alt="" />
-                      <span>2</span>
-                    </div>
-                    <div className="space">
-                      <img src="img/icons/space.png" alt="" />
-                      <span>120 sq ft</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Single Featured Property */}
-            <div className="col-12 col-md-6 col-xl-4">
-              <div className="single-featured-property mb-50">
-                {/* Property Thumbnail */}
-                <div className="property-thumb">
-                  <img src="img/bg-img/feature3.jpg" alt="" />
-                  <div className="tag">
-                    <span>For Sale</span>
-                  </div>
-                  <div className="list-price">
-                    <p>$945 679</p>
-                  </div>
-                </div>
-                {/* Property Content */}
-                <div className="property-content">
-                  <h5>Town House in Los Angeles</h5>
-                  <p className="location">
-                    <img src="img/icons/location.png" alt="" />
-                    Upper Road 3411, no.34 CA
-                  </p>
-                  <p>
-                    Integer nec bibendum lacus. Suspendisse dictum enim sit amet
-                    libero malesuada.
-                  </p>
-                  <div className="property-meta-data d-flex align-items-end justify-content-between">
-                    <div className="new-tag">
-                      <img src="img/icons/new.png" alt="" />
-                    </div>
-                    <div className="bathroom">
-                      <img src="img/icons/bathtub.png" alt="" />
-                      <span>2</span>
-                    </div>
-                    <div className="garage">
-                      <img src="img/icons/garage.png" alt="" />
-                      <span>2</span>
-                    </div>
-                    <div className="space">
-                      <img src="img/icons/space.png" alt="" />
-                      <span>120 sq ft</span>
+                    {/* req for meet button */}
+                    <div
+                      style={{
+                        display: "inline-block",
+                        position: "relative",
+                        overflow: "hidden",
+                        marginTop: "20px",
+                        marginLeft: "80px",
+                        borderRadius: "20px",
+                      }}
+                    >
+                      <button
+                        style={{
+                          padding: "10px 20px",
+                          border: "none",
+                          outline: "none",
+                          backgroundImage:
+                            "linear-gradient(135deg, #000000, #947054)",
+                          color: "white",
+                          fontFamily: "Arial, sans-serif",
+                          fontSize: 16,
+                          borderRadius: 20,
+                          cursor: "pointer",
+                          position: "relative",
+                          zIndex: 1,
+                          overflow: "hidden",
+                        }}
+                      >
+                        Learn More
+                      </button>
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: 0,
+                          left: 0,
+                          width: "100%",
+                          height: "100%",
+                          background:
+                            "linear-gradient(135deg, #000000, #947054)",
+                          mixBlendMode: "screen",
+                          pointerEvents: "none",
+                        }}
+                      />
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "50%",
+                          left: "50%",
+                          width: "300%",
+                          height: "300%",
+                          background:
+                            "radial-gradient(circle, #000000, #947054, #000000)",
+                          transform: "translate(-50%, -50%)",
+                          mixBlendMode: "lighten",
+                          animation: "waves 2s infinite",
+                        }}
+                      />
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            {/* Single Featured Property */}
-            <div className="col-12 col-md-6 col-xl-4">
-              <div className="single-featured-property mb-50">
-                {/* Property Thumbnail */}
-                <div className="property-thumb">
-                  <img src="img/bg-img/feature4.jpg" alt="" />
-                  <div className="tag">
-                    <span>For Sale</span>
-                  </div>
-                  <div className="list-price">
-                    <p>$945 679</p>
-                  </div>
-                </div>
-                {/* Property Content */}
-                <div className="property-content">
-                  <h5>Villa in Los Angeles</h5>
-                  <p className="location">
-                    <img src="img/icons/location.png" alt="" />
-                    Upper Road 3411, no.34 CA
-                  </p>
-                  <p>
-                    Integer nec bibendum lacus. Suspendisse dictum enim sit amet
-                    libero malesuada.
-                  </p>
-                  <div className="property-meta-data d-flex align-items-end justify-content-between">
-                    <div className="new-tag">
-                      <img src="img/icons/new.png" alt="" />
-                    </div>
-                    <div className="bathroom">
-                      <img src="img/icons/bathtub.png" alt="" />
-                      <span>2</span>
-                    </div>
-                    <div className="garage">
-                      <img src="img/icons/garage.png" alt="" />
-                      <span>2</span>
-                    </div>
-                    <div className="space">
-                      <img src="img/icons/space.png" alt="" />
-                      <span>120 sq ft</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Single Featured Property */}
-            <div className="col-12 col-md-6 col-xl-4">
-              <div className="single-featured-property mb-50">
-                {/* Property Thumbnail */}
-                <div className="property-thumb">
-                  <img src="img/bg-img/feature5.jpg" alt="" />
-                  <div className="tag">
-                    <span>For Sale</span>
-                  </div>
-                  <div className="list-price">
-                    <p>$945 679</p>
-                  </div>
-                </div>
-                {/* Property Content */}
-                <div className="property-content">
-                  <h5>Town House in Los Angeles</h5>
-                  <p className="location">
-                    <img src="img/icons/location.png" alt="" />
-                    Upper Road 3411, no.34 CA
-                  </p>
-                  <p>
-                    Integer nec bibendum lacus. Suspendisse dictum enim sit amet
-                    libero malesuada.
-                  </p>
-                  <div className="property-meta-data d-flex align-items-end justify-content-between">
-                    <div className="new-tag">
-                      <img src="img/icons/new.png" alt="" />
-                    </div>
-                    <div className="bathroom">
-                      <img src="img/icons/bathtub.png" alt="" />
-                      <span>2</span>
-                    </div>
-                    <div className="garage">
-                      <img src="img/icons/garage.png" alt="" />
-                      <span>2</span>
-                    </div>
-                    <div className="space">
-                      <img src="img/icons/space.png" alt="" />
-                      <span>120 sq ft</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Single Featured Property */}
-            <div className="col-12 col-md-6 col-xl-4">
-              <div className="single-featured-property mb-50">
-                {/* Property Thumbnail */}
-                <div className="property-thumb">
-                  <img src="img/bg-img/feature6.jpg" alt="" />
-                  <div className="tag">
-                    <span>For Sale</span>
-                  </div>
-                  <div className="list-price">
-                    <p>$945 679</p>
-                  </div>
-                </div>
-                {/* Property Content */}
-                <div className="property-content">
-                  <h5>Town House in Los Angeles</h5>
-                  <p className="location">
-                    <img src="img/icons/location.png" alt="" />
-                    Upper Road 3411, no.34 CA
-                  </p>
-                  <p>
-                    Integer nec bibendum lacus. Suspendisse dictum enim sit amet
-                    libero malesuada.
-                  </p>
-                  <div className="property-meta-data d-flex align-items-end justify-content-between">
-                    <div className="new-tag">
-                      <img src="img/icons/new.png" alt="" />
-                    </div>
-                    <div className="bathroom">
-                      <img src="img/icons/bathtub.png" alt="" />
-                      <span>2</span>
-                    </div>
-                    <div className="garage">
-                      <img src="img/icons/garage.png" alt="" />
-                      <span>2</span>
-                    </div>
-                    <div className="space">
-                      <img src="img/icons/space.png" alt="" />
-                      <span>120 sq ft</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Single Featured Property */}
-            <div className="col-12 col-md-6 col-xl-4">
-              <div className="single-featured-property mb-50">
-                {/* Property Thumbnail */}
-                <div className="property-thumb">
-                  <img src="img/bg-img/feature7.jpg" alt="" />
-                  <div className="tag">
-                    <span>For Sale</span>
-                  </div>
-                  <div className="list-price">
-                    <p>$945 679</p>
-                  </div>
-                </div>
-                {/* Property Content */}
-                <div className="property-content">
-                  <h5>Town House in Los Angeles</h5>
-                  <p className="location">
-                    <img src="img/icons/location.png" alt="" />
-                    Upper Road 3411, no.34 CA
-                  </p>
-                  <p>
-                    Integer nec bibendum lacus. Suspendisse dictum enim sit amet
-                    libero malesuada.
-                  </p>
-                  <div className="property-meta-data d-flex align-items-end justify-content-between">
-                    <div className="new-tag">
-                      <img src="img/icons/new.png" alt="" />
-                    </div>
-                    <div className="bathroom">
-                      <img src="img/icons/bathtub.png" alt="" />
-                      <span>2</span>
-                    </div>
-                    <div className="garage">
-                      <img src="img/icons/garage.png" alt="" />
-                      <span>2</span>
-                    </div>
-                    <div className="space">
-                      <img src="img/icons/space.png" alt="" />
-                      <span>120 sq ft</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Single Featured Property */}
-            <div className="col-12 col-md-6 col-xl-4">
-              <div className="single-featured-property mb-50">
-                {/* Property Thumbnail */}
-                <div className="property-thumb">
-                  <img src="img/bg-img/feature8.jpg" alt="" />
-                  <div className="tag">
-                    <span>For Sale</span>
-                  </div>
-                  <div className="list-price">
-                    <p>$945 679</p>
-                  </div>
-                </div>
-                {/* Property Content */}
-                <div className="property-content">
-                  <h5>Town House in Los Angeles</h5>
-                  <p className="location">
-                    <img src="img/icons/location.png" alt="" />
-                    Upper Road 3411, no.34 CA
-                  </p>
-                  <p>
-                    Integer nec bibendum lacus. Suspendisse dictum enim sit amet
-                    libero malesuada.
-                  </p>
-                  <div className="property-meta-data d-flex align-items-end justify-content-between">
-                    <div className="new-tag">
-                      <img src="img/icons/new.png" alt="" />
-                    </div>
-                    <div className="bathroom">
-                      <img src="img/icons/bathtub.png" alt="" />
-                      <span>2</span>
-                    </div>
-                    <div className="garage">
-                      <img src="img/icons/garage.png" alt="" />
-                      <span>2</span>
-                    </div>
-                    <div className="space">
-                      <img src="img/icons/space.png" alt="" />
-                      <span>120 sq ft</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Single Featured Property */}
-            <div className="col-12 col-md-6 col-xl-4">
-              <div className="single-featured-property mb-50">
-                {/* Property Thumbnail */}
-                <div className="property-thumb">
-                  <img src="img/bg-img/feature9.jpg" alt="" />
-                  <div className="tag">
-                    <span>For Sale</span>
-                  </div>
-                  <div className="list-price">
-                    <p>$945 679</p>
-                  </div>
-                </div>
-                {/* Property Content */}
-                <div className="property-content">
-                  <h5>Town House in Los Angeles</h5>
-                  <p className="location">
-                    <img src="img/icons/location.png" alt="" />
-                    Upper Road 3411, no.34 CA
-                  </p>
-                  <p>
-                    Integer nec bibendum lacus. Suspendisse dictum enim sit amet
-                    libero malesuada.
-                  </p>
-                  <div className="property-meta-data d-flex align-items-end justify-content-between">
-                    <div className="new-tag">
-                      <img src="img/icons/new.png" alt="" />
-                    </div>
-                    <div className="bathroom">
-                      <img src="img/icons/bathtub.png" alt="" />
-                      <span>2</span>
-                    </div>
-                    <div className="garage">
-                      <img src="img/icons/garage.png" alt="" />
-                      <span>2</span>
-                    </div>
-                    <div className="space">
-                      <img src="img/icons/space.png" alt="" />
-                      <span>120 sq ft</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
           <div className="row">
             <div className="col-12">
