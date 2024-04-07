@@ -133,63 +133,65 @@ export default function Property() {
                       </div>
                     </div>
                     {/* req for meet button */}
-                    <div
-                      style={{
-                        display: "inline-block",
-                        position: "relative",
-                        overflow: "hidden",
-                        marginTop: "20px",
-                        marginLeft: "80px",
-                        borderRadius: "20px",
-                      }}
-                    >
-                      <button
+                    <Link to={`/Singlept/` + properties.property_id}>
+                      <div
                         style={{
-                          padding: "10px 20px",
-                          border: "none",
-                          outline: "none",
-                          backgroundImage:
-                            "linear-gradient(135deg, #000000, #947054)",
-                          color: "white",
-                          fontFamily: "Arial, sans-serif",
-                          fontSize: 16,
-                          borderRadius: 20,
-                          cursor: "pointer",
+                          display: "inline-block",
                           position: "relative",
-                          zIndex: 1,
                           overflow: "hidden",
+                          marginTop: "20px",
+                          marginLeft: "80px",
+                          borderRadius: "20px",
                         }}
                       >
-                        Learn More
-                      </button>
-                      <div
-                        style={{
-                          position: "absolute",
-                          top: 0,
-                          left: 0,
-                          width: "100%",
-                          height: "100%",
-                          background:
-                            "linear-gradient(135deg, #000000, #947054)",
-                          mixBlendMode: "screen",
-                          pointerEvents: "none",
-                        }}
-                      />
-                      <div
-                        style={{
-                          position: "absolute",
-                          top: "50%",
-                          left: "50%",
-                          width: "300%",
-                          height: "300%",
-                          background:
-                            "radial-gradient(circle, #000000, #947054, #000000)",
-                          transform: "translate(-50%, -50%)",
-                          mixBlendMode: "lighten",
-                          animation: "waves 2s infinite",
-                        }}
-                      />
-                    </div>
+                        <button
+                          style={{
+                            padding: "10px 20px",
+                            border: "none",
+                            outline: "none",
+                            backgroundImage:
+                              "linear-gradient(135deg, #000000, #947054)",
+                            color: "white",
+                            fontFamily: "Arial, sans-serif",
+                            fontSize: 16,
+                            borderRadius: 20,
+                            cursor: "pointer",
+                            position: "relative",
+                            zIndex: 1,
+                            overflow: "hidden",
+                          }}
+                        >
+                          Learn More
+                        </button>
+                        <div
+                          style={{
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            width: "100%",
+                            height: "100%",
+                            background:
+                              "linear-gradient(135deg, #000000, #947054)",
+                            mixBlendMode: "screen",
+                            pointerEvents: "none",
+                          }}
+                        />
+                        <div
+                          style={{
+                            position: "absolute",
+                            top: "50%",
+                            left: "50%",
+                            width: "300%",
+                            height: "300%",
+                            background:
+                              "radial-gradient(circle, #000000, #947054, #000000)",
+                            transform: "translate(-50%, -50%)",
+                            mixBlendMode: "lighten",
+                            animation: "waves 2s infinite",
+                          }}
+                        />
+                      </div>
+                    </Link>
                   </div>
                 </div>
               </div>

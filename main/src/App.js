@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import Property from "./components/Property";
 import About from "./components/About";
 import Blogs from "./components/Blogs";
+import Singlept from "./components/Singlept";
 
 const Layout = () => {
   return (
@@ -31,6 +32,7 @@ function App() {
             <Route path="/Properties" element={<Property />} />
             <Route path="/About" element={<About />} />
             <Route path="/Blogs" element={<Blogs />} />
+            <Route path="/Singlept/:id" element={<Singlept />} />
           </Routes>
           <Footer />
         </>
