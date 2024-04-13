@@ -18,6 +18,11 @@ export default function Singlept() {
   const [update_date, setupdate_date] = useState("");
   const [property_price, setproperty_price] = useState("");
   const [type, settype] = useState("");
+  const [acc_name, setacc_name] = useState("");
+  const [full_name, setfull_name] = useState("");
+  const [contact, setcontact] = useState("");
+  const [img, setimages] = useState([]);
+  const [dealer_email, setdealer_email] = useState("");
 
   const location1 = useLocation();
   const navigate = useNavigate();
@@ -47,6 +52,11 @@ export default function Singlept() {
     setupdate_date(res.data.update_date);
     setproperty_price(res.data.property_price);
     settype(res.data.type);
+    setacc_name(res.data.acc_name);
+    setfull_name(res.data.full_name);
+    setcontact(res.data.contact);
+    setimages(res.data.img);
+    setdealer_email(res.data.dealer_email);
   };
   return (
     <>
@@ -121,79 +131,40 @@ export default function Singlept() {
                     <span>120 sq ft</span>
                   </div>
                 </div>
-                {/* Core Features */}
-                <ul className="listings-core-features d-flex align-items-center">
-                  <li>
-                    <i className="fa fa-check" aria-hidden="true" /> Gated
-                    Community
-                  </li>
-                  <li>
-                    <i className="fa fa-check" aria-hidden="true" /> Automatic
-                    Sprinklers
-                  </li>
-                  <li>
-                    <i className="fa fa-check" aria-hidden="true" /> Fireplace
-                  </li>
-                  <li>
-                    <i className="fa fa-check" aria-hidden="true" /> Window
-                    Shutters
-                  </li>
-                  <li>
-                    <i className="fa fa-check" aria-hidden="true" /> Ocean Views
-                  </li>
-                  <li>
-                    <i className="fa fa-check" aria-hidden="true" /> Heated
-                    Floors
-                  </li>
-                  <li>
-                    <i className="fa fa-check" aria-hidden="true" /> Heated
-                    Floors
-                  </li>
-                  <li>
-                    <i className="fa fa-check" aria-hidden="true" /> Private
-                    Patio
-                  </li>
-                  <li>
-                    <i className="fa fa-check" aria-hidden="true" /> Window
-                    Shutters
-                  </li>
-                  <li>
-                    <i className="fa fa-check" aria-hidden="true" /> Fireplace
-                  </li>
-                  <li>
-                    <i className="fa fa-check" aria-hidden="true" /> Beach
-                    Access
-                  </li>
-                  <li>
-                    <i className="fa fa-check" aria-hidden="true" /> Rooftop
-                    Terrace
-                  </li>
-                </ul>
                 {/* Listings Btn Groups */}
-                <div className="listings-btn-groups">
-                  <a href="#" className="btn south-btn">
-                    See Floor plans
-                  </a>
-                  <a href="#" className="btn south-btn active">
-                    calculate mortgage
-                  </a>
+                <div
+                  className="listings-btn-groups"
+                  style={{ marginTop: "50px" }}
+                >
+                  <button class="button-5" role="button">
+                    Send meeting req.
+                  </button>
                 </div>
               </div>
             </div>
             <div className="col-12 col-md-6 col-lg-4">
               <div className="contact-realtor-wrapper">
                 <div className="realtor-info">
-                  <img src="img/bg-img/listing.jpg" alt="" />
+                  <img
+                    src={`http://localhost:1122/uploads/${img}`}
+                    alt="Profile Picture"
+                    style={{
+                      borderRadius: "50%",
+                      width: "120px",
+                      height: "120px",
+                      objectFit: "cover",
+                      marginTop: "10px",
+                      marginLeft: "110px",
+                    }}
+                  />
                   <div className="realtor---info">
-                    <h2>Jeremy Scott</h2>
-                    <p>Realtor</p>
+                    <h2>{full_name}</h2>
+                    <p>{acc_name}</p>
                     <h6>
-                      <img src="img/icons/phone-call.png" alt="" /> +45 677
-                      8993000 223
+                      <img src="img/icons/phone-call.png" alt="" /> {contact}
                     </h6>
                     <h6>
-                      <img src="img/icons/envelope.png" alt="" />{" "}
-                      office@template.com
+                      <img src="img/icons/envelope.png" alt="" /> {dealer_email}
                     </h6>
                   </div>
                   <div className="realtor--contact-form">

@@ -13,7 +13,8 @@ export const getproperties = (req, res) => {
 };
 
 export const getproperty = (req, res) => {
-  const query = "select * from property where property_id=?";
+  const query =
+    "select a.*, b.* from property a, mst_dealer b where property_id=? and a.dealer_id = b.dealer_id";
 
   db.query(query, [req.params.id], (err, data) => {
     if (err) return res.json(err);
