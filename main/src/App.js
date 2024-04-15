@@ -19,25 +19,32 @@ const Layout = () => {
 };
 
 function App() {
-  // const [auth, setAuth] = useState(sessionStorage.getItem("user"));
-  // const [role_id, setRole] = useState(sessionStorage.getItem("role"));
+  const [auth, setAuth] = useState(sessionStorage.getItem("user"));
 
   return (
     <>
       <BrowserRouter>
-        <>
-          <Layout />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Home" element={<Home />} />
-            <Route path="/Properties" element={<Property />} />
-            <Route path="/About" element={<About />} />
-            <Route path="/Blogs" element={<Blogs />} />
-            <Route path="/Singlept/:id" element={<Singlept />} />
-            <Route path="/Login" element={<Login />} />
-          </Routes>
-          <Footer />
-        </>
+        {auth ? (
+          <>
+            <Layout />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/Home" element={<Home />} />
+              <Route path="/Properties" element={<Property />} />
+              <Route path="/About" element={<About />} />
+              <Route path="/Blogs" element={<Blogs />} />
+              <Route path="/Singlept/:id" element={<Singlept />} />
+              <Route path="/Login" element={<Login />} />
+            </Routes>
+            <Footer />
+          </>
+        ) : (
+          <>
+            <Routes>
+              <Route path="/" element={<Login />} />
+            </Routes>
+          </>
+        )}
       </BrowserRouter>
     </>
   );

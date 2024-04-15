@@ -1,125 +1,130 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 export default function Login() {
+  const [contact, setContact] = useState("");
+  const [password, setpassword] = useState("");
+  const [error, setError] = useState("");
+
+  const submitHandle = async (e) => {
+    e.preventDefault();
+    //alert(role_id);
+    try {
+      const res = await axios.get("http://localhost:1122/kk/userlogin", {
+        params: {
+          contact: contact,
+          password: password,
+        },
+      });
+
+      if (res.data > 0) {
+        setError("");
+        sessionStorage.setItem("user", res.data);
+
+        window.location.reload();
+      } else {
+        setError("Invalid UserId or Password");
+      }
+    } catch (error) {}
+  };
   return (
     <div>
       <div
         style={{
-          backgroundColor: "#f0f0f0",
-          padding: "30px",
-          textAlign: "center",
-          fontFamily: "Arial, sans-serif",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
         }}
       >
-        <h2 style={{ color: "#333" }}>Sign In</h2>
+        {/* Left side: Login form */}
         <div
           style={{
-            backgroundColor: "#fff",
-            padding: "20px",
-            border: "1px solid #ccc",
-            margin: "0 auto",
-            width: "300px",
+            width: "50%",
+            padding: 20,
+            marginLeft: 150,
+            marginRight: 150,
+            height: "100%",
           }}
         >
-          <form>
-            <div style={{ marginBottom: "10px" }}>
-              <label
-                htmlFor="email"
-                style={{
-                  display: "block",
-                  color: "#333",
-                  fontSize: "14px",
-                  marginBottom: "5px",
-                }}
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                style={{
-                  width: "100%",
-                  padding: "5px",
-                  border: "1px solid #ccc",
-                  borderRadius: "4px",
-                }}
-              />
+          {/* Login title */}
+          <div
+            style={{
+              fontSize: 24,
+              fontWeight: "bold",
+              marginBottom: 20,
+              marginTop: "10%",
+              marginLeft: "41%",
+              fontSize: 45,
+              color: "black",
+              marginBottom: 5,
+            }}
+          >
+            Login
+          </div>
+          <div style={{ marginLeft: 170, marginBottom: 75 }}>
+            <p>Enter your contact and password for login</p>
+          </div>
+          {/* User contact field */}
+          <div style={{ marginBottom: 15 }}>
+            <div style={{ marginBottom: 5, color: "black" }}>Contact</div>
+            <input
+              type="text"
+              placeholder="User Contact"
+              style={{
+                width: "100%",
+                padding: 8,
+                borderRadius: 5,
+                border: "1px solid gray",
+              }}
+              onChange={(e) => setContact(e.target.value)}
+            />
+          </div>
+          {/* Password field */}
+          <div style={{ marginBottom: 15 }}>
+            <div style={{ marginBottom: 5, color: "black", marginTop: 20 }}>
+              Password
             </div>
-            <div style={{ marginBottom: "10px" }}>
-              <label
-                htmlFor="password"
-                style={{
-                  display: "block",
-                  color: "#333",
-                  fontSize: "14px",
-                  marginBottom: "5px",
-                }}
-              >
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                style={{
-                  width: "100%",
-                  padding: "5px",
-                  border: "1px solid #ccc",
-                  borderRadius: "4px",
-                }}
-              />
-            </div>
-            <div style={{ marginBottom: "10px" }}>
-              <input
-                type="checkbox"
-                id="agree"
-                name="agree"
-                value="agree"
-                style={{ marginRight: "5px" }}
-              />
-              <label
-                htmlFor="agree"
-                style={{ color: "#333", fontSize: "14px" }}
-              >
-                I agree the Terms and Conditions
-              </label>
-            </div>
-            <div style={{ marginBottom: "10px" }}>
-              <input
-                type="submit"
-                value="SIGN IN"
-                style={{
-                  backgroundColor: "#4CAF50",
-                  color: "#fff",
-                  padding: "10px 20px",
-                  border: "none",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                }}
-              />
-            </div>
-            <div style={{ marginBottom: "10px" }}>
-              <a href="#" style={{ color: "#007bff", fontSize: "14px" }}>
-                Forgot Password?
-              </a>
-            </div>
-            <div style={{ marginBottom: "10px" }}>
-              <a href="#" style={{ color: "#007bff", fontSize: "14px" }}>
-                Create account
-              </a>
-            </div>
-            <div style={{ marginBottom: "10px" }}>
-              <a href="#" style={{ color: "#007bff", fontSize: "14px" }}>
-                Sign In with Google
-              </a>
-            </div>
-            <div style={{ marginBottom: "10px" }}>
-              <a href="#" style={{ color: "#007bff", fontSize: "14px" }}>
-                Sign In with Twitter
-              </a>
-            </div>
-          </form>
+            <input
+              type="password"
+              placeholder="Password"
+              style={{
+                width: "100%",
+                padding: 8,
+                borderRadius: 5,
+                border: "1px solid grey",
+              }}
+              onChange={(e) => setpassword(e.target.value)}
+            />
+          </div>
+          {/* Login button */}
+          <div>
+            <button
+              className="button-84"
+              style={{
+                width: "100%",
+                marginTop: 20,
+              }}
+              onClick={submitHandle}
+            >
+              Login
+            </button>
+          </div>
+        </div>
+        {/* Right side: Image */}
+        <div style={{ width: "50%", borderRadius: 10, marginLeft: 10 }}>
+          <img
+            src="http://wonderfulengineering.com/wp-content/uploads/2016/01/black-wallpaper-5.jpg"
+            alt="Image"
+            style={{
+              width: "100%",
+              height: "700px",
+              borderRadius: 30,
+              objectFit: "cover",
+              padding: 20,
+              borderColor: "white",
+            }}
+          />
         </div>
       </div>
     </div>
