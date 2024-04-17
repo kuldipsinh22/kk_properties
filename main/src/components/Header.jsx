@@ -35,7 +35,7 @@ export default function Header() {
             <img src={`http://localhost:1122/uploads/${img}`} alt="" />
 
             <div className="number">
-              <Link to={"/Profile"}>{user_name}</Link>
+              <Link to={"/Profile/" + auth}>{user_name}</Link>
             </div>
           </div>
         </div>
