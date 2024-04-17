@@ -28,7 +28,7 @@ const ProfilePage = () => {
     background: "#BA68C8",
     color: "#fff",
     cursor: "pointer",
-    border: "solauth 1px #BA68C8",
+    border: "solid 1px #BA68C8",
   };
   const [user_name, setuser_name] = useState("");
   const [img, setimg] = useState("");
@@ -41,18 +41,18 @@ const ProfilePage = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
-  const auth = location.pathname.split("/")[2]
+  const id = location.pathname.split("/")[2]
     ? location.pathname.split("/")[2]
     : "";
   useEffect(() => {
-    console.log(auth);
-    if (auth) {
+    console.log(id);
+    if (id) {
       getuser();
     }
   }, []);
 
   const getuser = async () => {
-    const url = "http://localhost:1122/kk/user/" + auth;
+    const url = "http://localhost:1122/kk/user/" + id;
     console.log(url);
     const res = await axios.get(url);
     console.log(res.data);
@@ -80,11 +80,11 @@ const ProfilePage = () => {
     let res = "";
     console.log(formData);
 
-    res = await axios.put("http://localhost:1122/kk/user/" + auth, formData);
+    res = await axios.put("http://localhost:1122/kk/user/" + id, formData);
 
     console.log(res.data);
     alert(res.data);
-    navigate("/Users");
+    navigate("/Profile/" + id);
   };
   return (
     <div style={bodyStyle} className="container rounded bg-white mb-5">
@@ -96,12 +96,12 @@ const ProfilePage = () => {
           <div className="d-flex flex-column align-items-center text-center p-3 py-5">
             <img
               className="rounded-circle mt-5"
-              wauthth="150px"
-              src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+              width="150px"
+              src={`http://localhost:1122/uploads/${img}`}
               alt="Profile"
             />
-            <span className="font-weight-bold">Edogaru</span>
-            <span className="text-black-50">edogaru@mail.com.my</span>
+            <span className="font-weight-bold">{user_name}</span>
+            <span className="text-black-50">{user_email}</span>
           </div>
         </div>
         <div className="col-md-5 border-right">
@@ -110,131 +110,171 @@ const ProfilePage = () => {
               <h4 className="text-right">Profile Settings</h4>
             </div>
             <div className="row mt-2">
-              <div className="col-md-6">
-                <label className="labels" style={labelsStyle}>
-                  Name
-                </label>
+              <div className="col-md-12">
+                <div
+                  style={{
+                    marginBottom: 5,
+                    color: "black",
+                    marginTop: 10,
+                  }}
+                >
+                  Your Name
+                </div>
                 <input
                   type="text"
-                  className="form-control"
-                  placeholder="first name"
-                />
-              </div>
-              <div className="col-md-6">
-                <label className="labels" style={labelsStyle}>
-                  Surname
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="surname"
+                  style={{
+                    width: "100%",
+                    padding: 8,
+                    borderRadius: 5,
+                    border: "1px solid purple",
+                    color: "#31124B",
+                  }}
+                  defaultValue={user_name}
+                  onChange={(e) => setuser_name(e.target.value)}
                 />
               </div>
             </div>
             <div className="row mt-3">
               <div className="col-md-12">
-                <label className="labels" style={labelsStyle}>
-                  Mobile Number
-                </label>
+                <div
+                  style={{
+                    marginBottom: 5,
+                    color: "black",
+                    marginTop: 10,
+                  }}
+                >
+                  Your contact
+                </div>
                 <input
                   type="text"
-                  className="form-control"
-                  placeholder="enter phone number"
+                  style={{
+                    width: "100%",
+                    padding: 8,
+                    borderRadius: 5,
+                    border: "1px solid purple",
+                    color: "#31124B",
+                  }}
+                  defaultValue={contact}
+                  onChange={(e) => setcontact(e.target.value)}
                 />
               </div>
               <div className="col-md-12">
-                <label className="labels" style={labelsStyle}>
-                  Address Line 1
-                </label>
+                <div
+                  style={{
+                    marginBottom: 5,
+                    color: "black",
+                    marginTop: 10,
+                  }}
+                >
+                  Your Email
+                </div>
                 <input
-                  type="text"
-                  className="form-control"
-                  placeholder="enter address line 1"
+                  type="email"
+                  style={{
+                    width: "100%",
+                    padding: 8,
+                    borderRadius: 5,
+                    border: "1px solid purple",
+                    color: "#31124B",
+                  }}
+                  defaultValue={user_email}
+                  onChange={(e) => setuser_email(e.target.value)}
                 />
               </div>
               <div className="col-md-12">
-                <label className="labels" style={labelsStyle}>
-                  Address Line 2
-                </label>
+                <div
+                  style={{
+                    marginBottom: 5,
+                    color: "black",
+                    marginTop: 10,
+                  }}
+                >
+                  Password
+                </div>
                 <input
-                  type="text"
-                  className="form-control"
-                  placeholder="enter address line 2"
+                  type="password"
+                  style={{
+                    width: "100%",
+                    padding: 8,
+                    borderRadius: 5,
+                    border: "1px solid purple",
+                    color: "#31124B",
+                  }}
+                  defaultValue={password}
+                  onChange={(e) => setpassword(e.target.value)}
                 />
               </div>
               <div className="col-md-12">
-                <label className="labels" style={labelsStyle}>
-                  Postcode
-                </label>
+                <div
+                  style={{
+                    marginBottom: 5,
+                    color: "black",
+                    marginTop: 10,
+                  }}
+                >
+                  Profile picture
+                </div>
+                <input
+                  type="file"
+                  style={{
+                    width: "100%",
+                    padding: 8,
+                    borderRadius: 5,
+                    border: "1px solid purple",
+                    color: "#31124B",
+                  }}
+                  onChange={(e) => setimg(e.target.files[0])}
+                />
+              </div>
+
+              <div className="col-md-12">
+                <div
+                  style={{
+                    marginBottom: 5,
+                    color: "black",
+                    marginTop: 10,
+                  }}
+                >
+                  City
+                </div>
                 <input
                   type="text"
-                  className="form-control"
-                  placeholder="enter postcode"
+                  style={{
+                    width: "100%",
+                    padding: 8,
+                    borderRadius: 5,
+                    border: "1px solid purple",
+                    color: "#31124B",
+                  }}
+                  defaultValue={city}
+                  onChange={(e) => setcity(e.target.value)}
                 />
               </div>
               <div className="col-md-12">
-                <label className="labels" style={labelsStyle}>
+                <div
+                  style={{
+                    marginBottom: 5,
+                    color: "black",
+                    marginTop: 10,
+                  }}
+                >
                   State
-                </label>
+                </div>
                 <input
                   type="text"
-                  className="form-control"
-                  placeholder="enter state"
-                />
-              </div>
-              <div className="col-md-12">
-                <label className="labels" style={labelsStyle}>
-                  Area
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="enter area"
-                />
-              </div>
-              <div className="col-md-12">
-                <label className="labels" style={labelsStyle}>
-                  Email auth
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="enter email auth"
-                />
-              </div>
-              <div className="col-md-12">
-                <label className="labels" style={labelsStyle}>
-                  Education
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="education"
+                  style={{
+                    width: "100%",
+                    padding: 8,
+                    borderRadius: 5,
+                    border: "1px solid purple",
+                    color: "#31124B",
+                  }}
+                  defaultValue={state}
+                  onChange={(e) => setstate(e.target.value)}
                 />
               </div>
             </div>
-            <div className="row mt-3">
-              <div className="col-md-6">
-                <label className="labels" style={labelsStyle}>
-                  Country
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="country"
-                />
-              </div>
-              <div className="col-md-6">
-                <label className="labels" style={labelsStyle}>
-                  State/Region
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="state/region"
-                />
-              </div>
-            </div>
+
             <div className="mt-5 text-center">
               <button
                 className="btn btn-primary profile-button"
