@@ -51,7 +51,7 @@ export const insertuser = (req, res) => {
 
 export const updateuser = (req, res) => {
   const query =
-    "UPDATE `mst_user` SET `user_name`=?, `img`=?, `contact`=?, `user_email`=?, `password`=?, `status`=?, `update_date`=? where user_id=?";
+    "UPDATE `mst_user` SET `user_name`=?, `img`=?, `contact`=?, `user_email`=?, `password`=?, `status`=?, `city`=?, `state`=?, `update_date`=? where user_id=?";
   const values = [
     req.body.user_name,
     req.file?.filename || req.body.img,
@@ -59,6 +59,8 @@ export const updateuser = (req, res) => {
     req.body.user_email,
     req.body.password,
     req.body.status,
+    req.body.city,
+    req.body.state,
     new Date(),
   ];
   console.log(query);

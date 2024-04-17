@@ -280,6 +280,7 @@ const ProfilePage = () => {
                 className="btn btn-primary profile-button"
                 style={profileButtonStyle}
                 type="button"
+                onClick={submitbtn}
               >
                 Save Profile
               </button>
