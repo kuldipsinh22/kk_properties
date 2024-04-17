@@ -1,8 +1,9 @@
 import { db } from "../db.js";
 
 export const getMeetinguser = (req, res) => {
-  const query1 = "SELECT * FROM meet_req where user_id=?";
-  db.query(query, [req.params.id], (err, data) => {
+  const query1 =
+    "SELECT a.*,b.*,c.* FROM meet_req a, property b, mst_dealer c where user_id=? and a.property_id=b.property_id and c.dealer_id=a.dealer_id";
+  db.query(query1, [req.params.id], (err, data) => {
     if (err) return res.json(err);
     return res.json(data);
   });

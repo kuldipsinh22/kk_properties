@@ -38,6 +38,7 @@ const ProfilePage = () => {
   const [status, setstatus] = useState("");
   const [city, setcity] = useState("");
   const [state, setstate] = useState("");
+  const [meeting, setMeeting] = useState([]);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -51,6 +52,15 @@ const ProfilePage = () => {
     }
   }, []);
 
+  useEffect(() => {
+    getProperty();
+  }, []);
+  const getProperty = async () => {
+    const res = await axios.get("http://localhost:1122/kk/meeting/" + id);
+    setMeeting(res.data);
+    console.log(res.data);
+    console.log(id);
+  };
   const getuser = async () => {
     const url = "http://localhost:1122/kk/user/" + id;
     console.log(url);
@@ -104,7 +114,7 @@ const ProfilePage = () => {
             <span className="text-black-50">{user_email}</span>
           </div>
         </div>
-        <div className="col-md-5 border-right">
+        <div className="col-md-3 border-right">
           <div className="p-3 py-5">
             <div className="d-flex justify-content-between align-items-center mb-3">
               <h4 className="text-right">Profile Settings</h4>
@@ -287,39 +297,63 @@ const ProfilePage = () => {
             </div>
           </div>
         </div>
-        <div className="col-md-4">
+        <div className="col-md-3 border-right">
           <div className="p-3 py-5">
             <div className="d-flex justify-content-between align-items-center experience">
-              <span>Edit Experience</span>
-              <span
-                className="border px-3 p-1 add-experience"
-                style={addExperienceHoverStyle}
+              <h3>My pending requests</h3>
+            </div>
+            {meeting.map((meeting) => (
+              <div
+                style={{
+                  boxShadow:
+                    "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
+
+                  borderRadius: "10px",
+                }}
               >
-                <i className="fa fa-plus"></i>&nbsp;Experience
-              </span>
+                <div style={{ marginTop: 10, marginLeft: 10 }}>
+                  <p style={{ color: "grey" }}>
+                    Meeting date - <br /> {meeting.meet_date}
+                  </p>
+                  <p style={{ color: "grey" }}>
+                    Property name - {meeting.property_name}
+                  </p>
+                  <p style={{ color: "grey" }}>
+                    Dealer name - {meeting.acc_name}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="col-md-3">
+          <div className="p-3 py-5">
+            <div className="d-flex justify-content-between align-items-center experience">
+              <h3>My Accepted Meetings</h3>
             </div>
-            <br />
-            <div className="col-md-12">
-              <label className="labels" style={labelsStyle}>
-                Experience in Designing
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="experience"
-              />
-            </div>
-            <br />
-            <div className="col-md-12">
-              <label className="labels" style={labelsStyle}>
-                Additional Details
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="additional details"
-              />
-            </div>
+            {meeting.map((meeting) => (
+              <div
+                style={{
+                  boxShadow:
+                    "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
+
+                  borderRadius: "10px",
+                }}
+              >
+                <div style={{ marginTop: 10, marginLeft: 10 }}>
+                  <p style={{ color: "grey" }}>
+                    Meeting date - <br /> {meeting.meet_date}
+                  </p>
+                  <p style={{ color: "grey" }}>
+                    Property name - {meeting.property_name}
+                  </p>
+                  <p style={{ color: "grey" }}>
+                    Dealer name - {meeting.acc_name}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

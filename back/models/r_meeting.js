@@ -1,7 +1,7 @@
 import express from "express";
 import {
   deleteMeeting,
-  getMeetingdealer,
+  // getMeetingdealer,
   getMeetings,
   getMeetinguser,
   insertMeeting,
@@ -9,7 +9,7 @@ import {
 
 const router8 = express.Router();
 
-router8.get("/:id", getMeetingdealer);
+// router8.get("/:id", getMeetingdealer);
 router8.get("/", getMeetings);
 router8.get("/:id", getMeetinguser);
 router8.post("/", insertMeeting);
