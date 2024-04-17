@@ -1,7 +1,27 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Header() {
+  const [user_name, setuser_name] = useState("");
+  const [img, setimg] = useState("");
+  const [auth, setAuth] = useState(sessionStorage.getItem("user"));
+
+  useEffect(() => {
+    console.log(auth);
+    if (auth) {
+      getProperty();
+    }
+  }, []);
+
+  const getProperty = async () => {
+    const url = "http://localhost:1122/kk/user/" + auth;
+    console.log(url);
+    const res = await axios.get(url);
+    console.log(res.data);
+    setuser_name(res.data.user_name);
+    setimg(res.data.img);
+  };
   return (
     <header className="header-area">
       <div className="top-header-area">
@@ -12,11 +32,10 @@ export default function Header() {
             </a>
           </div>
           <div className="phone-number d-flex">
-            <div className="icon">
-              <img src="img/icons/phone-call.png" alt="" />
-            </div>
+            <img src={`http://localhost:1122/uploads/${img}`} alt="" />
+
             <div className="number">
-              <a href="tel:+45 677 8993000 223">+91 63532 20031</a>
+              <Link to={"/Profile"}>{user_name}</Link>
             </div>
           </div>
         </div>
