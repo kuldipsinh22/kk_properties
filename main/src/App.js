@@ -8,6 +8,7 @@ import About from "./components/About";
 import Blogs from "./components/Blogs";
 import Singlept from "./components/Singlept";
 import Login from "./components/Login";
+import Profile from "./components/Profile";
 
 const Layout = () => {
   return (
@@ -34,7 +35,7 @@ function App() {
               <Route path="/About" element={<About />} />
               <Route path="/Blogs" element={<Blogs />} />
               <Route path="/Singlept/:id" element={<Singlept />} />
-              <Route path="/Login" element={<Login />} />
+              <Route path="/Profile" element={<Profile />} />
             </Routes>
             <Footer />
           </>

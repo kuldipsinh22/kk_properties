@@ -23,6 +23,11 @@ export default function Singlept() {
   const [contact, setcontact] = useState("");
   const [img, setimages] = useState([]);
   const [dealer_email, setdealer_email] = useState("");
+  const [user_id, setUser_id] = useState("");
+  const [property_id, setProperty_id] = useState("");
+  const [meet_date, setMeet_date] = useState("");
+
+  const [auth, setAuth] = useState(sessionStorage.getItem("user"));
 
   const location1 = useLocation();
   const navigate = useNavigate();
@@ -58,9 +63,20 @@ export default function Singlept() {
     setimages(res.data.img);
     setdealer_email(res.data.dealer_email);
   };
+
+  const submitbtn = async (e) => {
+    const data = {
+      user_id: auth,
+      dealer_id: dealer_id,
+      property_id: id,
+      meet_date,
+    };
+    const res = await axios.post("http://localhost:1122/kk/meeting", data);
+    console.log(res.data);
+    alert(res.data);
+  };
   return (
     <>
-      {/* ##### Breadcumb Area Start ##### */}
       {/* <section
         className="breadcumb-area bg-img"
         style={{ backgroundImage: "url(img/bg-img/hero1.jpg)" }}
@@ -69,24 +85,15 @@ export default function Singlept() {
           <div className="row h-100 align-items-center">
             <div className="col-12">
               <div className="breadcumb-content">
-                <h3 className="breadcumb-title">Property</h3>
+                <h3 className="breadcumb-title">Listings</h3>
               </div>
             </div>
           </div>
         </div>
       </section> */}
-      {/* ##### Breadcumb Area End ##### */}
       {/* ##### Listings Content Area Start ##### */}
       <section className="listings-content-wrapper section-padding-100">
         <div className="container">
-          {/* <div className="row">
-            <div className="col-12">
-              <div className="">
-                Single Slide
-                <img src="img/bg-img/hero5.jpg" alt="" />
-              </div>
-            </div>
-          </div> */}
           <div>
             <img
               src={`http://localhost:1122/uploads/${p_img}`}
@@ -131,15 +138,6 @@ export default function Singlept() {
                     <span>120 sq ft</span>
                   </div>
                 </div>
-                {/* Listings Btn Groups */}
-                <div
-                  className="listings-btn-groups"
-                  style={{ marginTop: "50px" }}
-                >
-                  <button class="button-5" role="button">
-                    Send meeting req.
-                  </button>
-                </div>
               </div>
             </div>
             <div className="col-12 col-md-6 col-lg-4">
@@ -171,53 +169,28 @@ export default function Singlept() {
                     <form action="#" method="post">
                       <div className="form-group">
                         <input
-                          type="text"
+                          type="date"
                           className="form-control"
                           id="realtor-name"
-                          placeholder="Your Name"
+                          onChange={(e) => setMeet_date(e.target.value)}
                         />
                       </div>
-                      <div className="form-group">
-                        <input
-                          type="number"
-                          className="form-control"
-                          id="realtor-number"
-                          placeholder="Your Number"
-                        />
+
+                      <div
+                        className="listings-btn-groups"
+                        style={{ marginTop: "50px" }}
+                      >
+                        <button
+                          class="button-5"
+                          role="button"
+                          onClick={submitbtn}
+                        >
+                          Send meeting req.
+                        </button>
                       </div>
-                      <div className="form-group">
-                        <input
-                          type="enumber"
-                          className="form-control"
-                          id="realtor-email"
-                          placeholder="Your Mail"
-                        />
-                      </div>
-                      <div className="form-group">
-                        <textarea
-                          name="message"
-                          className="form-control"
-                          id="realtor-message"
-                          cols={30}
-                          rows={10}
-                          placeholder="Your Message"
-                          defaultValue={""}
-                        />
-                      </div>
-                      <button type="submit" className="btn south-btn">
-                        Send Message
-                      </button>
                     </form>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          {/* Listing Maps */}
-          <div className="row">
-            <div className="col-12">
-              <div className="listings-maps mt-100">
-                <div id="googleMap" />
               </div>
             </div>
           </div>
