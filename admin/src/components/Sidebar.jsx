@@ -6,6 +6,7 @@ import { CiUser } from "react-icons/ci";
 import { RiAdminLine } from "react-icons/ri";
 import { PiBuildings } from "react-icons/pi";
 import { IoIosLogOut } from "react-icons/io";
+import { PiHandshakeLight } from "react-icons/pi";
 
 export default function Sidebar() {
   const [auth, setAuth] = useState(sessionStorage.getItem("user"));
@@ -51,6 +52,11 @@ export default function Sidebar() {
       path: "/PropertyforDealer",
       name: "Properties",
       icon: <PiBuildings size={20} color="#FB8340" />,
+    },
+    {
+      path: "/Meetingreq",
+      name: "Meeting Requests",
+      icon: <PiHandshakeLight size={20} color="#FB8340" />,
     },
   ];
   const btnSignOut = () => {

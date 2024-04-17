@@ -2,7 +2,7 @@ import { db } from "../db.js";
 
 export const getproperties = (req, res) => {
   const query1 =
-    "SELECT a.*, b.* FROM property a, mst_dealer b where a.dealer_id = b.dealer_id";
+    "SELECT a.*, b.* FROM property a, mst_dealer b where a.dealer_id = b.dealer_id and a.status=1";
   db.query(query1, (err, data) => {
     if (err) {
       return res.json(err);

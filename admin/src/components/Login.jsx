@@ -58,7 +58,7 @@ export default function Login() {
                         >
                           <option value="0">Select Role</option>
                           <option value="1">Admin</option>
-                          <option value="2">Dealer </option>
+                          <option value="2">Dealer</option>
                         </select>
                       </div>
                       <label>Contact</label>

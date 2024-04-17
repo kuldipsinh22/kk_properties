@@ -39,6 +39,7 @@ const ProfilePage = () => {
   const [city, setcity] = useState("");
   const [state, setstate] = useState("");
   const [meeting, setMeeting] = useState([]);
+  const [accept, setacceptmeet] = useState([]);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -53,11 +54,21 @@ const ProfilePage = () => {
   }, []);
 
   useEffect(() => {
-    getProperty();
+    getPendingMeets();
   }, []);
-  const getProperty = async () => {
+  const getPendingMeets = async () => {
     const res = await axios.get("http://localhost:1122/kk/meeting/" + id);
     setMeeting(res.data);
+    console.log(res.data);
+    console.log(id);
+  };
+
+  useEffect(() => {
+    getAcceptedMeets();
+  }, []);
+  const getAcceptedMeets = async () => {
+    const res = await axios.get("http://localhost:1122/kk/accept/" + id);
+    setacceptmeet(res.data);
     console.log(res.data);
     console.log(id);
   };
@@ -332,7 +343,7 @@ const ProfilePage = () => {
             <div className="d-flex justify-content-between align-items-center experience">
               <h3>My Accepted Meetings</h3>
             </div>
-            {meeting.map((meeting) => (
+            {accept.map((meeting) => (
               <div
                 style={{
                   boxShadow:
