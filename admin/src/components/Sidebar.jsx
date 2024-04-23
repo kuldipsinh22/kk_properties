@@ -98,7 +98,7 @@ export default function Sidebar() {
               class="navbar-brand-img h-100"
               alt="main_logo"
             />
-            <span class="ms-1 font-weight-bold">Argon Dashboard 2</span>
+            <span class="font-weight-bold">KK ADMIN</span>
           </a>
         </div>
         <hr class="horizontal dark mt-0" />

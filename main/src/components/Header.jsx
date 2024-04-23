@@ -43,9 +43,10 @@ export default function Header() {
       <div className="main-header-area" id="stickyHeader">
         <div className="classy-nav-container breakpoint-off">
           <nav className="classy-navbar justify-content-between" id="southNav">
-            <a className="nav-brand" href="index.html">
-              <img src="img/core-img/logo.png" alt="" />
-            </a>
+            <Link className="nav-brand" to="/Home">
+              <span style={{ color: "#947054" }}>KK</span>{" "}
+              <span style={{ color: "white" }}>Properties</span>
+            </Link>
             <div className="classy-navbar-toggler">
               <span className="navbarToggler">
                 <span />

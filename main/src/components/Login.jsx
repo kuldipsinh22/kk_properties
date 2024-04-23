@@ -66,6 +66,7 @@ export default function Login() {
             <p>Enter your contact and password for login</p>
           </div>
           {/* User contact field */}
+
           <div style={{ marginBottom: 15 }}>
             <div style={{ marginBottom: 5, color: "black" }}>Contact</div>
             <input
