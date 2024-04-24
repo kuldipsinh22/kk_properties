@@ -17,6 +17,13 @@ const ProfilePage = () => {
     boxShadow: "none",
     border: "none",
   };
+
+  const signoutbtn = {
+    background: "#ff4242",
+    boxShadow: "none",
+    border: "none",
+    marginLeft: 1,
+  };
   const profileButtonHoverFocusStyle = {
     background: "#682773",
     boxShadow: "none",
@@ -106,6 +113,13 @@ const ProfilePage = () => {
     console.log(res.data);
     alert(res.data);
     navigate("/Profile/" + id);
+  };
+
+  const signout = () => {
+    sessionStorage.clear();
+    // setId("");
+    navigate("/");
+    window.location.reload();
   };
   return (
     <div style={bodyStyle} className="container rounded bg-white mb-5">
@@ -304,6 +318,14 @@ const ProfilePage = () => {
                 onClick={submitbtn}
               >
                 Save Profile
+              </button>
+              <button
+                className="btn btn-primary profile-button"
+                style={signoutbtn}
+                type="button"
+                onClick={signout}
+              >
+                log out
               </button>
             </div>
           </div>

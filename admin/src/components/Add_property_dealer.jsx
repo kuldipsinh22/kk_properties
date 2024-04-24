@@ -12,8 +12,13 @@ export default function Add_property_dealer() {
   const [entry_date, setentry_date] = useState("");
   const [update_date, setupdate_date] = useState("");
   const [property_price, setproperty_price] = useState("");
+
+  const [bedrooms, setbedrooms] = useState("");
+  const [bathrooms, setbathrooms] = useState("");
+  const [sqft, setsqft] = useState("");
   const [type, settype] = useState("");
   const [auth, setAuth] = useState(sessionStorage.getItem("user"));
+  const [formErrors, setFormErrors] = useState({});
 
   const location1 = useLocation();
   const navigate = useNavigate();
@@ -27,6 +32,36 @@ export default function Add_property_dealer() {
     }
   }, []);
 
+  const validate = () => {
+    const errors = {};
+    if (!property_name) {
+      errors.property_name = "Property Name is required";
+    }
+    if (!property_type) {
+      errors.property_type = "Rent/Sell is required";
+    }
+    if (!p_img) {
+      errors.p_img = "Property Image is required";
+    }
+    if (!description) {
+      errors.description = "Description is required";
+    }
+    if (!tags) {
+      errors.tags = "Tags is required";
+    }
+    if (!location) {
+      errors.location = "Location is required";
+    }
+    if (!property_price) {
+      errors.property_price = "Price is required";
+    }
+    if (!type) {
+      errors.type = "Type is required";
+    }
+
+    return errors;
+  };
+
   const getuser = async () => {
     const url = "http://localhost:1122/kk/property/" + id;
     console.log(url);
@@ -38,14 +73,16 @@ export default function Add_property_dealer() {
     setdescription(res.data.description);
     settags(res.data.tags);
     setlocation(res.data.location);
-    setentry_date(res.data.entry_date);
-    setupdate_date(res.data.update_date);
     setproperty_price(res.data.property_price);
     settype(res.data.type);
+    setbedrooms(res.data.bedrooms);
+    setbathrooms(res.data.bathrooms);
+    setsqft(res.data.sqft);
   };
 
   const submitbtn = async (e) => {
     e.preventDefault();
+    setFormErrors(validate());
     const formData = new FormData();
     formData.append("property_name", property_name);
     formData.append("property_type", property_type);
@@ -58,6 +95,9 @@ export default function Add_property_dealer() {
     formData.append("update_date", update_date);
     formData.append("property_price", property_price);
     formData.append("type", type);
+    formData.append("bedrooms", bedrooms);
+    formData.append("bathrooms", bathrooms);
+    formData.append("sqft", sqft);
     let res = "";
     console.log(formData);
 
@@ -103,7 +143,9 @@ export default function Add_property_dealer() {
                     defaultValue={property_name}
                     onChange={(e) => setproperty_name(e.target.value)}
                   />
+                  <p style={{ color: "red" }}>{formErrors.property_name}</p>
                 </div>
+
                 <label>Property image</label>
                 <div class="mb-3 col-6">
                   <input
@@ -113,6 +155,9 @@ export default function Add_property_dealer() {
                     defaultValue={p_img}
                     onChange={(e) => setp_img(e.target.files[0])}
                   />
+                  <p>
+                    <span style={{ color: "red" }}>{formErrors.p_img}</span>
+                  </p>
                 </div>
                 <label>Property type</label>
                 <div class="mb-3 col-6">
@@ -127,6 +172,7 @@ export default function Add_property_dealer() {
                     <option value="1">Residential</option>
                     <option value="2">Commercial</option>
                   </select>
+                  <p style={{ color: "red" }}>{formErrors.property_type}</p>
                 </div>
                 <label>Description</label>
                 <div class="mb-3 col-6">
@@ -139,7 +185,48 @@ export default function Add_property_dealer() {
                     defaultValue={description}
                     onChange={(e) => setdescription(e.target.value)}
                   />
+                  <p style={{ color: "red" }}>{formErrors.description}</p>
                 </div>
+
+                <label>Bedrooms</label>
+                <div class="mb-3 col-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Bedrooms"
+                    aria-label="Bedrooms"
+                    aria-describedby="Bedrooms.-addon"
+                    defaultValue={bedrooms}
+                    onChange={(e) => setbedrooms(e.target.value)}
+                  />
+                </div>
+
+                <label>Bathrooms</label>
+                <div class="mb-3 col-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Bathrooms"
+                    aria-label="Bathrooms"
+                    aria-describedby="Bathrooms.-addon"
+                    defaultValue={bathrooms}
+                    onChange={(e) => setbathrooms(e.target.value)}
+                  />
+                </div>
+
+                <label>Sqft</label>
+                <div class="mb-3 col-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Sqft"
+                    aria-label="Sqft"
+                    aria-describedby="Sqft.-addon"
+                    defaultValue={sqft}
+                    onChange={(e) => setsqft(e.target.value)}
+                  />
+                </div>
+
                 <label>Tags</label>
                 <div class="mb-3 col-6">
                   <input
@@ -151,6 +238,7 @@ export default function Add_property_dealer() {
                     defaultValue={tags}
                     onChange={(e) => settags(e.target.value)}
                   />
+                  <p style={{ color: "red" }}>{formErrors.tags}</p>
                 </div>
 
                 <label>Location</label>
@@ -164,6 +252,7 @@ export default function Add_property_dealer() {
                     defaultValue={location}
                     onChange={(e) => setlocation(e.target.value)}
                   />
+                  <p style={{ color: "red" }}>{formErrors.location}</p>
                 </div>
 
                 <label>Price</label>
@@ -177,6 +266,7 @@ export default function Add_property_dealer() {
                     defaultValue={property_price}
                     onChange={(e) => setproperty_price(e.target.value)}
                   />
+                  <p style={{ color: "red" }}>{formErrors.property_price}</p>
                 </div>
                 <label>
                   Type {"("}
@@ -194,6 +284,7 @@ export default function Add_property_dealer() {
                     <option value="0">Rent</option>
                     <option value="1">Sell</option>
                   </select>
+                  <p style={{ color: "red" }}>{formErrors.type}</p>
                 </div>
                 <div
                   class="text-center"

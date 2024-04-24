@@ -49,6 +49,26 @@ export const insertuser = (req, res) => {
   });
 };
 
+export const Signupuser = (req, res) => {
+  const query =
+    "INSERT INTO mst_user(`user_name`, `contact`, `user_email`, `password`, `status`, `entry_date`) values(?)";
+  const date = new Date();
+  const values = [
+    req.body.user_name,
+    req.body.contact,
+    req.body.user_email,
+    req.body.password,
+    req.body.status || 1,
+    date,
+  ];
+  console.log(query);
+  console.log(values);
+  db.query(query, [values], (err, data) => {
+    if (err) return res.json(err);
+    return res.json("Now you are registered!!!");
+  });
+};
+
 export const updateuser = (req, res) => {
   const query =
     "UPDATE `mst_user` SET `user_name`=?, `img`=?, `contact`=?, `user_email`=?, `password`=?, `status`=?, `city`=?, `state`=?, `update_date`=? where user_id=?";

@@ -14,6 +14,9 @@ export default function Add_property() {
   const [entry_date, setentry_date] = useState("");
   const [update_date, setupdate_date] = useState("");
   const [property_price, setproperty_price] = useState("");
+  const [bedrooms, setbedrooms] = useState("");
+  const [bathrooms, setbathrooms] = useState("");
+  const [sqft, setsqft] = useState("");
   const [type, settype] = useState("");
 
   const location1 = useLocation();
@@ -45,6 +48,9 @@ export default function Add_property() {
     setupdate_date(res.data.update_date);
     setproperty_price(res.data.property_price);
     settype(res.data.type);
+    setbedrooms(res.data.bedrooms);
+    setbathrooms(res.data.bathrooms);
+    setsqft(res.data.sqft);
   };
 
   const submitbtn = async (e) => {
@@ -62,6 +68,9 @@ export default function Add_property() {
     formData.append("update_date", update_date);
     formData.append("property_price", property_price);
     formData.append("type", type);
+    formData.append("bedrooms", bedrooms);
+    formData.append("bathrooms", bathrooms);
+    formData.append("sqft", sqft);
     let res = "";
     console.log(formData);
 
@@ -144,6 +153,46 @@ export default function Add_property() {
                     onChange={(e) => setdescription(e.target.value)}
                   />
                 </div>
+
+                <label>Bedrooms</label>
+                <div class="mb-3 col-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Bedrooms"
+                    aria-label="Bedrooms"
+                    aria-describedby="Bedrooms.-addon"
+                    defaultValue={bedrooms}
+                    onChange={(e) => setbedrooms(e.target.value)}
+                  />
+                </div>
+
+                <label>Bathrooms</label>
+                <div class="mb-3 col-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Bathrooms"
+                    aria-label="Bathrooms"
+                    aria-describedby="Bathrooms.-addon"
+                    defaultValue={bathrooms}
+                    onChange={(e) => setbathrooms(e.target.value)}
+                  />
+                </div>
+
+                <label>Sqft</label>
+                <div class="mb-3 col-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Sqft"
+                    aria-label="Sqft"
+                    aria-describedby="Sqft.-addon"
+                    defaultValue={sqft}
+                    onChange={(e) => setsqft(e.target.value)}
+                  />
+                </div>
+
                 <label>Tags</label>
                 <div class="mb-3 col-6">
                   <input

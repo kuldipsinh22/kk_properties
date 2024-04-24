@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [contact, setContact] = useState("");
@@ -110,6 +111,13 @@ export default function Login() {
             >
               Login
             </button>
+
+            {error && <p className="error-message">{error}</p>}
+          </div>
+          <div style={{ marginTop: 20 }}>
+            <Link to="/Signup">
+              <p>Don't have an account?</p>
+            </Link>
           </div>
         </div>
         {/* Right side: Image */}

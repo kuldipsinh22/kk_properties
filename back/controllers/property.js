@@ -32,12 +32,15 @@ export const deleteproperty = (req, res) => {
 
 export const insertproperty = (req, res) => {
   const query =
-    "INSERT INTO property(`property_name`, `property_type`, `p_img`, `description`, `tags`, `location`, `dealer_id`, `status`, `entry_date`, `property_price`, `type`) values(?)";
+    "INSERT INTO property(`property_name`, `property_type`, `p_img`, `bedrooms`, `bathrooms`, `sqft`,`description`, `tags`, `location`, `dealer_id`, `status`, `entry_date`, `property_price`, `type`) values(?)";
   const date = new Date();
   const values = [
     req.body.property_name,
     req.body.property_type || 1,
     req.file?.filename,
+    req.body.bedrooms,
+    req.body.bathrooms,
+    req.body.sqft,
     req.body.description,
     req.body.tags,
     req.body.location,
@@ -57,12 +60,15 @@ export const insertproperty = (req, res) => {
 
 export const updateproperty = (req, res) => {
   const query =
-    "UPDATE `property` SET `property_name`=?, `property_type`=?, `p_img`=?, `description`=?, `tags`=?, `location`=?, `dealer_id`=?, `status`=?, `update_date`=?, `property_price`=?, `type`=? where property_id=?";
+    "UPDATE `property` SET `property_name`=?, `property_type`=?, `p_img`=?, `description`=?, `bedrooms`=?, `bathrooms`=?, `sqft`=?,`tags`=?, `location`=?, `dealer_id`=?, `status`=?, `update_date`=?, `property_price`=?, `type`=? where property_id=?";
   const values = [
     req.body.property_name,
     req.body.property_type,
     req.file?.filename || req.body.p_img,
     req.body.description,
+    req.body.bedrooms,
+    req.body.bathrooms,
+    req.body.sqft,
     req.body.tags,
     req.body.location,
     req.body.dealer_id,
