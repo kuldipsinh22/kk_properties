@@ -14,6 +14,9 @@ import Dealer from "./components/Dealer";
 import Add_dealer from "./components/Add_dealer";
 import PropertyforDealer from "./components/PropertyforDealer";
 import Add_property_dealer from "./components/Add_property_dealer";
+import Meetingreq from "./components/Meeting_req";
+import Accept_req from "./components/Accept_req";
+import Meetaccepted from "./components/Meetaccepted";
 
 const Layout = () => {
   return (
@@ -66,6 +69,10 @@ function App() {
                 path="/Add_propertyd/:id"
                 element={<Add_property_dealer />}
               />
+              <Route path="/Meetingreq" element={<Meetingreq />} />
+              <Route path="/Meetaccepted" element={<Meetaccepted />} />
+
+              <Route path="/Accept_req/:id" element={<Accept_req />} />
             </Routes>
             <Footer />
           </>

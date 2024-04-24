@@ -16,7 +16,7 @@ export default function Meetingreq() {
   const getMeet = async () => {
     if (role_id == 2) {
       const res = await axios.get(
-        "http://localhost:1122/kk/meetdealer/" + auth
+        "http://localhost:1122/kk/meetaccepted/" + auth
       );
       setMeets(res.data);
       console.log(res.data);
@@ -45,7 +45,7 @@ export default function Meetingreq() {
                         Intrested By
                       </th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                        Meeting date
+                        Meeting Date
                       </th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                         Accept
@@ -83,14 +83,10 @@ export default function Meetingreq() {
                             {meets.meet_date}
                           </span>
                         </td>
-                        <td style={{ textAlign: "center" }}>
-                          <Link to={`/Accept_req/` + meets.mr_id}>
-                            <i
-                              class="fas fa-pencil-alt text-dark me-2"
-                              aria-hidden="true"
-                            ></i>
-                            Full data
-                          </Link>
+                        <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-success">
+                            Accepted
+                          </span>
                         </td>
                       </tr>
                     ))}

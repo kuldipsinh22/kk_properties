@@ -7,6 +7,7 @@ import { RiAdminLine } from "react-icons/ri";
 import { PiBuildings } from "react-icons/pi";
 import { IoIosLogOut } from "react-icons/io";
 import { PiHandshakeLight } from "react-icons/pi";
+import { FcAcceptDatabase } from "react-icons/fc";
 
 export default function Sidebar() {
   const [auth, setAuth] = useState(sessionStorage.getItem("user"));
@@ -57,6 +58,11 @@ export default function Sidebar() {
       path: "/Meetingreq",
       name: "Meeting Requests",
       icon: <PiHandshakeLight size={20} color="#FB8340" />,
+    },
+    {
+      path: "/Meetaccepted",
+      name: "Meeting Accepted",
+      icon: <FcAcceptDatabase size={20} color="#FB8340" />,
     },
   ];
   const btnSignOut = () => {

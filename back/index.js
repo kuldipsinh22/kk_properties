@@ -10,6 +10,8 @@ import router7 from "./models/r_pProperty.js";
 import router8 from "./models/r_meeting.js";
 import router9 from "./models/r_accept.js";
 import router10 from "./models/r_meetdeal.js";
+import router11 from "./models/r_singlemeet.js";
+import router12 from "./models/r_accptedmeets.js";
 
 const app = express();
 
@@ -26,6 +28,8 @@ app.use("/kk/pproperty", router7);
 app.use("/kk/meeting", router8);
 app.use("/kk/accept", router9);
 app.use("/kk/meetdealer", router10);
+app.use("/kk/singlemeet", router11);
+app.use("/kk/meetaccepted", router12);
 
 app.listen(1122, () => {
   console.log("Server is running on 1122 port...");
