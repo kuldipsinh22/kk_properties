@@ -5,15 +5,23 @@ import Footer from "./Footer";
 
 export default function Property() {
   const [properties, setProperties] = useState([]);
+  const [role_id, setRole] = useState(sessionStorage.getItem("role"));
   let i = 1;
   useEffect(() => {
     getProperties();
   }, []);
   const getProperties = async () => {
-    const res = await axios.get("http://localhost:1122/kk/property");
-    setProperties(res.data);
-    console.log(res.data);
+    if (role_id == 1) {
+      const res = await axios.get("http://localhost:1122/kk/meetaccepted");
+      setProperties(res.data);
+      console.log(res.data);
+    } else {
+      const res = await axios.get("http://localhost:1122/kk/property");
+      setProperties(res.data);
+      console.log(res.data);
+    }
   };
+
   const deleteProperties = async (id) => {
     let ans = window.confirm("are you sure?");
     if (ans) {

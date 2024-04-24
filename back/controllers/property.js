@@ -11,6 +11,17 @@ export const getproperties = (req, res) => {
     }
   });
 };
+export const getpropertiesadmin = (req, res) => {
+  const query1 =
+    "SELECT a.*, b.* FROM property a, mst_dealer b where a.dealer_id = b.dealer_id";
+  db.query(query1, (err, data) => {
+    if (err) {
+      return res.json(err);
+    } else {
+      return res.json(data);
+    }
+  });
+};
 
 export const getproperty = (req, res) => {
   const query =

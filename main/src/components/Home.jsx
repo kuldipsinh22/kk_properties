@@ -34,294 +34,18 @@ export default function Home() {
             <div className="row">
               <div className="col-12">
                 <div className="section-heading wow fadeInUp">
-                  <h2>Featured Properties</h2>
+                  <h2>Welcome to KK Properties</h2>
                   <p>
-                    Suspendisse dictum enim sit amet libero malesuada feugiat.
+                    Welcome to KK Properties! We're thrilled to have you join
+                    our trusted platform where finding your perfect property is
+                    just a few clicks away. Whether you're buying your dream
+                    home, seeking an ideal office space, or exploring investment
+                    opportunities, KK Properties is here to guide you through
+                    every step. Start your property journey with us today and
+                    experience a seamless and secure way to achieve your real
+                    estate goals. Thank you for choosing KK Properties – your
+                    trusted partner in property search and acquisition!
                   </p>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              {/* Single Featured Property */}
-              <div className="col-12 col-md-6 col-xl-4">
-                <div
-                  className="single-featured-property mb-50 wow fadeInUp"
-                  data-wow-delay="100ms"
-                >
-                  {/* Property Thumbnail */}
-                  <div className="property-thumb">
-                    <img src="img/bg-img/feature1.jpg" alt="" />
-                    <div className="tag">
-                      <span>For Sale</span>
-                    </div>
-                    <div className="list-price">
-                      <p>$945 679</p>
-                    </div>
-                  </div>
-                  {/* Property Content */}
-                  <div className="property-content">
-                    <h5>Villa in Los Angeles</h5>
-                    <p className="location">
-                      <img src="img/icons/location.png" alt="" />
-                      Upper Road 3411, no.34 CA
-                    </p>
-                    <p>
-                      Integer nec bibendum lacus. Suspendisse dictum enim sit
-                      amet libero malesuada.
-                    </p>
-                    <div className="property-meta-data d-flex align-items-end justify-content-between">
-                      <div className="new-tag">
-                        <img src="img/icons/new.png" alt="" />
-                      </div>
-                      <div className="bathroom">
-                        <img src="img/icons/bathtub.png" alt="" />
-                        <span>2</span>
-                      </div>
-                      <div className="garage">
-                        <img src="img/icons/garage.png" alt="" />
-                        <span>2</span>
-                      </div>
-                      <div className="space">
-                        <img src="img/icons/space.png" alt="" />
-                        <span>120 sq ft</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* Single Featured Property */}
-              <div className="col-12 col-md-6 col-xl-4">
-                <div
-                  className="single-featured-property mb-50 wow fadeInUp"
-                  data-wow-delay="200ms"
-                >
-                  {/* Property Thumbnail */}
-                  <div className="property-thumb">
-                    <img src="img/bg-img/feature2.jpg" alt="" />
-                    <div className="tag">
-                      <span>For Sale</span>
-                    </div>
-                    <div className="list-price">
-                      <p>$945 679</p>
-                    </div>
-                  </div>
-                  {/* Property Content */}
-                  <div className="property-content">
-                    <h5>Town House in Los Angeles</h5>
-                    <p className="location">
-                      <img src="img/icons/location.png" alt="" />
-                      Upper Road 3411, no.34 CA
-                    </p>
-                    <p>
-                      Integer nec bibendum lacus. Suspendisse dictum enim sit
-                      amet libero malesuada.
-                    </p>
-                    <div className="property-meta-data d-flex align-items-end justify-content-between">
-                      <div className="new-tag">
-                        <img src="img/icons/new.png" alt="" />
-                      </div>
-                      <div className="bathroom">
-                        <img src="img/icons/bathtub.png" alt="" />
-                        <span>2</span>
-                      </div>
-                      <div className="garage">
-                        <img src="img/icons/garage.png" alt="" />
-                        <span>2</span>
-                      </div>
-                      <div className="space">
-                        <img src="img/icons/space.png" alt="" />
-                        <span>120 sq ft</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* Single Featured Property */}
-              <div className="col-12 col-md-6 col-xl-4">
-                <div
-                  className="single-featured-property mb-50 wow fadeInUp"
-                  data-wow-delay="300ms"
-                >
-                  {/* Property Thumbnail */}
-                  <div className="property-thumb">
-                    <img src="img/bg-img/feature3.jpg" alt="" />
-                    <div className="tag">
-                      <span>For Sale</span>
-                    </div>
-                    <div className="list-price">
-                      <p>$945 679</p>
-                    </div>
-                  </div>
-                  {/* Property Content */}
-                  <div className="property-content">
-                    <h5>Town House in Los Angeles</h5>
-                    <p className="location">
-                      <img src="img/icons/location.png" alt="" />
-                      Upper Road 3411, no.34 CA
-                    </p>
-                    <p>
-                      Integer nec bibendum lacus. Suspendisse dictum enim sit
-                      amet libero malesuada.
-                    </p>
-                    <div className="property-meta-data d-flex align-items-end justify-content-between">
-                      <div className="new-tag">
-                        <img src="img/icons/new.png" alt="" />
-                      </div>
-                      <div className="bathroom">
-                        <img src="img/icons/bathtub.png" alt="" />
-                        <span>2</span>
-                      </div>
-                      <div className="garage">
-                        <img src="img/icons/garage.png" alt="" />
-                        <span>2</span>
-                      </div>
-                      <div className="space">
-                        <img src="img/icons/space.png" alt="" />
-                        <span>120 sq ft</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* Single Featured Property */}
-              <div className="col-12 col-md-6 col-xl-4">
-                <div
-                  className="single-featured-property mb-50 wow fadeInUp"
-                  data-wow-delay="400ms"
-                >
-                  {/* Property Thumbnail */}
-                  <div className="property-thumb">
-                    <img src="img/bg-img/feature4.jpg" alt="" />
-                    <div className="tag">
-                      <span>For Sale</span>
-                    </div>
-                    <div className="list-price">
-                      <p>$945 679</p>
-                    </div>
-                  </div>
-                  {/* Property Content */}
-                  <div className="property-content">
-                    <h5>Villa in Los Angeles</h5>
-                    <p className="location">
-                      <img src="img/icons/location.png" alt="" />
-                      Upper Road 3411, no.34 CA
-                    </p>
-                    <p>
-                      Integer nec bibendum lacus. Suspendisse dictum enim sit
-                      amet libero malesuada.
-                    </p>
-                    <div className="property-meta-data d-flex align-items-end justify-content-between">
-                      <div className="new-tag">
-                        <img src="img/icons/new.png" alt="" />
-                      </div>
-                      <div className="bathroom">
-                        <img src="img/icons/bathtub.png" alt="" />
-                        <span>2</span>
-                      </div>
-                      <div className="garage">
-                        <img src="img/icons/garage.png" alt="" />
-                        <span>2</span>
-                      </div>
-                      <div className="space">
-                        <img src="img/icons/space.png" alt="" />
-                        <span>120 sq ft</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* Single Featured Property */}
-              <div className="col-12 col-md-6 col-xl-4">
-                <div
-                  className="single-featured-property mb-50 wow fadeInUp"
-                  data-wow-delay="500ms"
-                >
-                  {/* Property Thumbnail */}
-                  <div className="property-thumb">
-                    <img src="img/bg-img/feature5.jpg" alt="" />
-                    <div className="tag">
-                      <span>For Sale</span>
-                    </div>
-                    <div className="list-price">
-                      <p>$945 679</p>
-                    </div>
-                  </div>
-                  {/* Property Content */}
-                  <div className="property-content">
-                    <h5>Town House in Los Angeles</h5>
-                    <p className="location">
-                      <img src="img/icons/location.png" alt="" />
-                      Upper Road 3411, no.34 CA
-                    </p>
-                    <p>
-                      Integer nec bibendum lacus. Suspendisse dictum enim sit
-                      amet libero malesuada.
-                    </p>
-                    <div className="property-meta-data d-flex align-items-end justify-content-between">
-                      <div className="new-tag">
-                        <img src="img/icons/new.png" alt="" />
-                      </div>
-                      <div className="bathroom">
-                        <img src="img/icons/bathtub.png" alt="" />
-                        <span>2</span>
-                      </div>
-                      <div className="garage">
-                        <img src="img/icons/garage.png" alt="" />
-                        <span>2</span>
-                      </div>
-                      <div className="space">
-                        <img src="img/icons/space.png" alt="" />
-                        <span>120 sq ft</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* Single Featured Property */}
-              <div className="col-12 col-md-6 col-xl-4">
-                <div
-                  className="single-featured-property mb-50 wow fadeInUp"
-                  data-wow-delay="600ms"
-                >
-                  {/* Property Thumbnail */}
-                  <div className="property-thumb">
-                    <img src="img/bg-img/feature6.jpg" alt="" />
-                    <div className="tag">
-                      <span>For Sale</span>
-                    </div>
-                    <div className="list-price">
-                      <p>$945 679</p>
-                    </div>
-                  </div>
-                  {/* Property Content */}
-                  <div className="property-content">
-                    <h5>Town House in Los Angeles</h5>
-                    <p className="location">
-                      <img src="img/icons/location.png" alt="" />
-                      Upper Road 3411, no.34 CA
-                    </p>
-                    <p>
-                      Integer nec bibendum lacus. Suspendisse dictum enim sit
-                      amet libero malesuada.
-                    </p>
-                    <div className="property-meta-data d-flex align-items-end justify-content-between">
-                      <div className="new-tag">
-                        <img src="img/icons/new.png" alt="" />
-                      </div>
-                      <div className="bathroom">
-                        <img src="img/icons/bathtub.png" alt="" />
-                        <span>2</span>
-                      </div>
-                      <div className="garage">
-                        <img src="img/icons/garage.png" alt="" />
-                        <span>2</span>
-                      </div>
-                      <div className="space">
-                        <img src="img/icons/space.png" alt="" />
-                        <span>120 sq ft</span>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -367,26 +91,29 @@ export default function Home() {
               data-wow-delay="250ms"
             >
               <img src="img/icons/prize.png" alt="" />
-              <h2>jeremy Scott</h2>
-              <p>Realtor</p>
+              <h2>Kuldipsinh Gohil</h2>
+              <p>Founder & CEO</p>
             </div>
             <p className="wow fadeInUp" data-wow-delay="500ms">
-              Etiam nec odio vestibulum est mattis effic iturut magna.
-              Pellentesque sit amet tellus blandit. Etiam nec odiomattis effic
-              iturut magna. Pellentesque sit am et tellus blandit. Etiam nec
-              odio vestibul. Etiam nec odio vestibulum est mat tis effic iturut
-              magna. Curabitur rhoncus auctor eleifend. Fusce venenatis diam
-              urna, eu pharetra arcu varius ac. Etiam cursus turpis lectus, id
-              iaculis risus tempor id. Phasellus fringilla nisl sed sem
-              scelerisque, eget aliquam magna vehicula.
+              Meet Kuldipsinh Gohil, the visionary founder of KK Properties. At
+              just 21 years old, Kuldipsinh is not only a final year BCA student
+              but also an innovative entrepreneur driven by a passion for
+              revolutionizing the real estate market. His academic background in
+              computer applications, combined with a keen interest in real
+              estate, has led him to create KK Properties, a platform designed
+              to simplify and secure the property buying and selling process.
+              Kuldipsinh's youthful energy and fresh perspective are at the
+              heart of KK Properties, embodying a commitment to provide a
+              user-friendly and efficient service for real estate enthusiasts
+              and professionals alike.
             </p>
             <div className="address wow fadeInUp" data-wow-delay="750ms">
               <h6>
-                <img src="img/icons/phone-call.png" alt="" /> +45 677 8993000
-                223
+                <img src="img/icons/phone-call.png" alt="" /> +91 6353220031
               </h6>
               <h6>
-                <img src="img/icons/envelope.png" alt="" /> office@template.com
+                <img src="img/icons/envelope.png" alt="" />{" "}
+                kuldipsinh0031@gmail.com
               </h6>
             </div>
             <div
@@ -398,7 +125,7 @@ export default function Home() {
           </div>
           {/* Editor Thumbnail */}
           <div className="editor-thumbnail">
-            <img src="img/bg-img/editor.jpg" alt="" />
+            <img src="img/icons/kk.jpeg" alt="" />
           </div>
         </section>
         {/* ##### Editor Area End ##### */}
