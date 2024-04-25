@@ -58,7 +58,7 @@ export default function Property() {
                         Name
                       </th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                        Description
+                        Square feet
                       </th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                         Status
@@ -100,7 +100,7 @@ export default function Property() {
                         </td>
                         <td>
                           <p class="text-s font-weight-bold mb-0">
-                            {properties.description}
+                            {properties.sqft}
                           </p>
                         </td>
 
