@@ -13,6 +13,7 @@ import router10 from "./models/r_meetdeal.js";
 import router11 from "./models/r_singlemeet.js";
 import router12 from "./models/r_accptedmeets.js";
 import router13 from "./models/r_signup.js";
+import router14 from "./models/r_sendmeet.js";
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use("/kk/meetdealer", router10);
 app.use("/kk/singlemeet", router11);
 app.use("/kk/meetaccepted", router12);
 app.use("/kk/signup", router13);
+app.use("/kk/sendmeet", router14);
 
 app.listen(1122, () => {
   console.log("Server is running on 1122 port...");

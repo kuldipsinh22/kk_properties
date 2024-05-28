@@ -17,6 +17,7 @@ import Add_property_dealer from "./components/Add_property_dealer";
 import Meetingreq from "./components/Meeting_req";
 import Accept_req from "./components/Accept_req";
 import Meetaccepted from "./components/Meetaccepted";
+import Signup from "./components/Signup";
 
 const Layout = () => {
   return (
@@ -71,7 +72,7 @@ function App() {
               />
               <Route path="/Meetingreq" element={<Meetingreq />} />
               <Route path="/Meetaccepted" element={<Meetaccepted />} />
-
+              <Route path="/Profile" element={<Profile />} />
               <Route path="/Accept_req/:id" element={<Accept_req />} />
             </Routes>
             <Footer />
@@ -80,6 +81,7 @@ function App() {
           <>
             <Routes>
               <Route path="/" element={<Login />} />
+              <Route path="/Signup" element={<Signup />} />
             </Routes>
           </>
         )}

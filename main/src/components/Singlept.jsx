@@ -72,10 +72,10 @@ export default function Singlept() {
       meet_date,
     };
     let res = "";
-    res = await axios.post("http://localhost:1122/kk/meeting", data);
+    res = await axios.post("http://localhost:1122/kk/sendmeet", data);
     console.log(res.data);
     alert(res.data);
-    navigate("/Home");
+    navigate("/Property");
   };
   return (
     <>

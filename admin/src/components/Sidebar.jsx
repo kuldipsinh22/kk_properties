@@ -64,6 +64,11 @@ export default function Sidebar() {
       name: "Meeting Accepted",
       icon: <FcAcceptDatabase size={20} color="#FB8340" />,
     },
+    {
+      path: "/Profile",
+      name: "Profile",
+      icon: <AiOutlineProfile size={20} color="#FB8340" />,
+    },
   ];
   const btnSignOut = () => {
     sessionStorage.clear();

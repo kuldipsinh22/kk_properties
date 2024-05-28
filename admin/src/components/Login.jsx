@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [contact, setphone] = useState("");
@@ -75,7 +76,7 @@ export default function Login() {
                       <label>Password</label>
                       <div class="mb-3">
                         <input
-                          type="email"
+                          type="password"
                           class="form-control"
                           placeholder="Password"
                           aria-label="Password"
@@ -94,6 +95,17 @@ export default function Login() {
                         </button>
                       </div>
                       <p style={{ color: "red" }}>{error}</p>
+
+                      <p
+                        style={{
+                          color: "#11ADEF",
+
+                          marginTop: "10px",
+                        }}
+                      >
+                        If you want to be a dealer then contact admin =
+                        6353220031
+                      </p>
                     </form>
                   </div>
                 </div>
